@@ -50,7 +50,7 @@ public class BattleFish
     public void RestoreHp(int restore)
     {
         CurrentHp += restore;
-        CurrentHp = Math.Min(CurrentHp, BaseStats.MaxHp);
+        CurrentHp = Math.Min(CurrentHp, GetCurrentStats().MaxHp);
     }
 
     public Stats GetCurrentStats()
