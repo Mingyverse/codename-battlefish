@@ -19,7 +19,12 @@ public class BattleFish
     public void ConsumeFood(Food food)
     {
         int affinity = food.FoodAffinity.GetValueOrDefault(BattleFishType, 1);
-        Mood += 5 * affinity;
+        RestoreMood(5 * affinity);
+    }
+
+    public void RestoreMood(int mood)
+    {
+        Mood += mood;
         Mood = Math.Min(Mood, MaxMood);
     }
 
