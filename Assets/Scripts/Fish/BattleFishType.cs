@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CodenameBattleFish.AI;
 using CodenameBattleFish.Habitat;
 
@@ -16,4 +17,5 @@ public class BattleFishType
     public Ability? Ability;
     public BattleClass BattleClass;
     public XpScaling XpScaling;
+    public Dictionary<BattleFishType, int> NeighbourAffinity = new Dictionary<BattleFishType, int>();
 }

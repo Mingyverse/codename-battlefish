@@ -22,7 +22,13 @@ public class BattleFish
         RestoreMood(5 * affinity);
     }
 
-    public void RestoreMood(int mood)
+    public void ConsumeMood(float mood)
+    {
+        Mood -= mood;
+        Mood = Math.Max(Mood, 0);
+    }
+    
+    public void RestoreMood(float mood)
     {
         Mood += mood;
         Mood = Math.Min(Mood, MaxMood);

@@ -23,4 +23,10 @@ public class BattleStage : Habitat
     {
         throw new NotImplementedException();
     }
+
+    public void AfterBattle()
+    {
+        throw new NotImplementedException();
+    }
+    
 }

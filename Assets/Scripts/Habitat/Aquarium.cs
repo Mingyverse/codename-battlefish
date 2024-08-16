@@ -24,6 +24,11 @@ public class Aquarium : Habitat
         throw new NotImplementedException();
     }
 
+    public void RestoreMood(float mood)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Clean()
     {
         throw new NotImplementedException();
