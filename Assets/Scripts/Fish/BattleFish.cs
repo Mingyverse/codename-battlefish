@@ -6,5 +6,4 @@ public class BattleFish : MonoBehaviour
     public FishStats stats;
     public Health health;
     public Level level;
-    public FishAI ai = default!;
 }

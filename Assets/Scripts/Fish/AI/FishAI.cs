@@ -1,21 +1,49 @@
+using System;
 using UnityEngine;
 
 public abstract class FishAI : MonoBehaviour
 {
+    public float speed = 1;
     
-    private float _lastAct = 0;
-    private BattleFish _fish;
+    protected Collider2D? target = null;
+    protected float lastAttack = 0;
+    
+    protected BattleFish fish = default!;
+    protected FishAbility ability = default!;
+    protected Rigidbody2D rb = default!;
+    protected ColliderObjects co = default!;
 
-    public FishAI()
+    public void Start()
     {
-        _fish = GetComponent<BattleFish>();
+        fish = GetComponentInParent<BattleFish>();
+        ability = fish.GetComponentInChildren<FishAbility>();
+        rb = fish.GetComponent<Rigidbody2D>();
+        co = GetComponent<ColliderObjects>();
     }
 
-    public bool CanAct()
+    public void Update()
     {
-        return Time.time > _lastAct + _fish.stats.attackSpeed;
+        if (CanAttack())
+            Attack();
+        
+        if (CanMove())
+            Move();
+        
+        if (ability.CanActivate())
+            ability.Activate();
     }
     
-    public abstract void Act();
-    public abstract GameObject GetTarget();
+    public bool CanMove()
+    {
+        return true;
+    }
+
+    public bool CanAttack()
+    {
+        return Time.time > lastAttack + fish.stats.attackSpeed;
+    }
+
+    public abstract void Move();
+    public abstract void Attack();
+    public abstract Collider2D? GetTarget();
 }

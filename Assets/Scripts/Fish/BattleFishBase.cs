@@ -11,5 +11,4 @@ public class BattleFishBase : ScriptableObject
     public FishStats.Stats levelUpStats;
     public FishClass fishClass;
     public XpScaling xpScaling;
-    public FishAbility ability = default!;
 }
