@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace CodenameBattleFish.AI;
-
 public class MeleeAI : FishAI
 {
     public override void Act()

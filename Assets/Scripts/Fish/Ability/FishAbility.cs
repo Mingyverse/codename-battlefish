@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace CodenameBattleFish;
-
 public abstract class FishAbility : MonoBehaviour
 {
     public string abilityName = default!;

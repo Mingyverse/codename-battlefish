@@ -1,5 +1,3 @@
-namespace CodenameBattleFish;
-
 public class Torrent : FishAbility
 {
     public override void Activate()

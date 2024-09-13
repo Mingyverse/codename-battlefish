@@ -1,5 +1,3 @@
-namespace CodenameBattleFish;
-
 public enum FishClass
 {
     Tank,

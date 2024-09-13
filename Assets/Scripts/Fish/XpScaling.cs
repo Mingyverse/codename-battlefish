@@ -1,7 +1,5 @@
 using System;
 
-namespace CodenameBattleFish;
-
 /*
  * Divided with 100 to get growth factor
  */

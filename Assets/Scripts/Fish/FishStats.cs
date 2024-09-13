@@ -1,5 +1,3 @@
-namespace CodenameBattleFish;
-
 public struct FishStats
 {
     public struct Stats

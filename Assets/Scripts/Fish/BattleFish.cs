@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace CodenameBattleFish;
-
 public class BattleFish : MonoBehaviour
 {
     public BattleFishBase battleFishBase = default!;

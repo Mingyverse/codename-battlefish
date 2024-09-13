@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace CodenameBattleFish;
-
 [CreateAssetMenu(fileName = "NewBattleFish", menuName = "Codename BattleFish/BattleFish Data", order = 0)]
 public class BattleFishBase : ScriptableObject
 {

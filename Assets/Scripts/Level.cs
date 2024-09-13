@@ -1,5 +1,3 @@
-namespace CodenameBattleFish;
-
 public struct Level
 {
     private BattleFish _fish;
