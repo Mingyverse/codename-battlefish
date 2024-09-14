@@ -1,5 +1,3 @@
-namespace CodenameBattleFish.Fish;
-
 public enum FishRarity
 {
     Common,
