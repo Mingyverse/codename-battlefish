@@ -1,24 +1,35 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public abstract class FishAI : MonoBehaviour
 {
-    public float speed = 1;
-    
-    protected Collider2D? target = null;
+    public float maxSpeed = 1;
+
+    protected GameObject? cachedTarget; 
     protected float lastAttack = 0;
+    protected GameObject[] targets = default!;
     
     protected BattleFish fish = default!;
     protected FishAbility ability = default!;
     protected Rigidbody2D rb = default!;
-    protected ColliderObjects co = default!;
+    protected CircleCollider2D col = default!;
+    
 
     public void Start()
     {
         fish = GetComponentInParent<BattleFish>();
         ability = fish.GetComponentInChildren<FishAbility>();
         rb = fish.GetComponent<Rigidbody2D>();
-        co = GetComponent<ColliderObjects>();
+        col = GetComponent<CircleCollider2D>();
+
+        if (fish.CompareTag("Team1"))
+            targets = GameObject.FindGameObjectsWithTag("Team2");
+        else
+            targets = GameObject.FindGameObjectsWithTag("Team1");
+        
+        cachedTarget = GetTarget();
     }
 
     public void Update()
@@ -32,7 +43,7 @@ public abstract class FishAI : MonoBehaviour
         if (ability.CanActivate())
             ability.Activate();
     }
-    
+
     public bool CanMove()
     {
         return true;
@@ -45,5 +56,5 @@ public abstract class FishAI : MonoBehaviour
 
     public abstract void Move();
     public abstract void Attack();
-    public abstract Collider2D? GetTarget();
+    public abstract GameObject? GetTarget();
 }

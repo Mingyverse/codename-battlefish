@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -8,32 +7,33 @@ public class MeleeAI : FishAI
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        target = GetTarget();
+        cachedTarget = GetTarget();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        target = GetTarget();
+        cachedTarget = GetTarget();
     }
 
     public override void Move()
     {
+        Vector2 swimDirection = Vector2.right;
+        if (cachedTarget != null)
+            swimDirection = cachedTarget.transform.position - transform.position;
+        else
+        {
+            Debug.Log("No Target");
+        }
         
-        Vector2 swimTo = Vector2.right;
 
         if (rb.velocity.y < -0.5)
-            swimTo.y += 2;
+            swimDirection.y += 2;
         
-        if (target != null)
-            swimTo = target.transform.position;
+        if (fish.health.percentage < fleeThreshold)
+            swimDirection = -swimDirection;
         
-        if (fish.health.value / fish.stats.maxHp < fleeThreshold)
-            swimTo = -swimTo;
-
-        
-        Vector2 pos = Vector2.MoveTowards(transform.position, swimTo, 50 * speed * Time.deltaTime);
-        
-        rb.AddForce(pos - (Vector2)transform.position);
+        rb.AddForce(swimDirection.normalized);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
     public override void Attack()
@@ -41,11 +41,12 @@ public class MeleeAI : FishAI
         
     }
 
-    public override Collider2D? GetTarget()
+    public override GameObject? GetTarget()
     {
-        return co.colliders
-            .Where(col => col.GetComponent<BattleFish>())
-            .OrderByDescending(col => Vector2.Distance(transform.position, col.transform.position))
+        return targets
+            .Where(hitCol => hitCol.GetComponent<BattleFish>())
+            .Where(hitCol => Vector2.Distance(transform.position, hitCol.transform.position) < col.radius)
+            .OrderByDescending(hitCol => Vector2.Distance(transform.position, hitCol.transform.position))
             .FirstOrDefault();
     }
 }
