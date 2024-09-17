@@ -45,6 +45,15 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
+    uniqueID: 3741614013
+    locked: 0
+  - name: WaterMesh
+    uniqueID: 3980921525
+    locked: 0
+  - name: SortingTexture
+    uniqueID: 3734449359
+    locked: 0
+  - name: Background
     uniqueID: 333576571
     locked: 0
   - name: Foreground
