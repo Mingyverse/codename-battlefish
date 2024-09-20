@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         animator.SetFloat("Horizontal", Mathf.Abs(movement.x * movementSpeed));
-        animator.SetFloat("Vertical", Mathf.Abs(movement.y * movementSpeed));
+        animator.SetFloat("Vertical", Mathf.Abs(movement.y * movementSpeed / 2));
         
         float angleY = 0f;
         float angleZ = 0f;
