@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float movementSpeed = 3;
+    [SerializeField] private float movementSpeed = 4;
     private Vector2 movement;
     private Animator animator;
     
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(Input.GetAxis("Horizontal"), 0).normalized;
         animator.SetFloat("Direction", Mathf.Abs(movement.magnitude * movementSpeed));
 
-        bool flipped = movement.x < 0;
-        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
+        bool flippedX = movement.x < 0;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flippedX ? 180f : 0f, 0f));
     }
 
     void FixedUpdate()
