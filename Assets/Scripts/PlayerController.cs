@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 4;
     private Vector2 movement;
+    // private Vector2 movementY;
     private Animator animator;
     
     // Start is called before the first frame update
@@ -21,8 +22,13 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(Input.GetAxis("Horizontal"), 0).normalized;
         animator.SetFloat("Direction", Mathf.Abs(movement.magnitude * movementSpeed));
 
+        /* movementY = new Vector2(Input.GetAxis("Vertical"), 0).normalized; */
+
         bool flippedX = movement.x < 0;
         this.transform.rotation = Quaternion.Euler(new Vector3(0f, flippedX ? 180f : 0f, 0f));
+        
+        /* bool flippedY = movementY.y < 0;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flippedY ? 180f : 0f, 0f)); */
     }
 
     void FixedUpdate()
@@ -32,5 +38,11 @@ public class PlayerController : MonoBehaviour
             var xMovement = movement.x * movementSpeed * Time.deltaTime;
             this.transform.Translate(new Vector3(xMovement, 0), Space.World);
         }
+        
+        /* if (movementY != Vector2.zero)
+        {
+            var yMovement = movementY.y * movementSpeed * Time.deltaTime;
+            this.transform.Translate(new Vector3(yMovement, 0), Space.World);
+        } */
     }
 }
