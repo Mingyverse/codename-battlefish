@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Abs(movement.x * movementSpeed));
         animator.SetFloat("Vertical", Mathf.Abs(movement.y * movementSpeed));
         
-
         float angleY = 0f;
         float angleZ = 0f;
 
