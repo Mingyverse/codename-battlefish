@@ -48,7 +48,7 @@ public class TransparentFG : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(FadeOutSprite(0.7f, 0.7f, 1.0f));
+            StartCoroutine(FadeOutSprite(0.4f, 0.7f, 1.0f));
         }
     }
 }
