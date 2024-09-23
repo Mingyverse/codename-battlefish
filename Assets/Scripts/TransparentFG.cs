@@ -1,54 +1,66 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class TransparentFG : MonoBehaviour
 {
-
-    public SpriteRenderer? foreground;
+    public float opacityPerSecond = 1.0f;
     
-    // Start is called before the first frame update
+    private SpriteRenderer _foreground = default!;
+    private float _currentOpacity = 1.0f;
+    private IEnumerator? _lastFade;
+    
     void Start()
     {
-        foreground = GetComponent<SpriteRenderer>();
+        _foreground = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(_foreground);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    IEnumerator FadeOutSprite(float duration, float startOpacity, float targetOpacity)
-    {
-        float opacity;
-        var time = 0f;
-        while (time < duration)
+        if (other.gameObject.CompareTag("Player") && isActiveAndEnabled)
         {
-            opacity = Mathf.Lerp(startOpacity, targetOpacity, time / duration);
-            foreground.color = new Color(1f, 1f, 1f, opacity);
-            time += Time.deltaTime;
+            StopLastFade();
+            
+            _lastFade = FadeTo(0.7f);
+            StartCoroutine(_lastFade);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && isActiveAndEnabled)
+        {
+            StopLastFade();
+            
+            _lastFade = FadeTo(1.0f);
+            StartCoroutine(_lastFade);
+        }
+    }
+    
+    IEnumerator FadeTo(float targetOpacity)
+    {
+        float duration = CalculateDuration(targetOpacity);
+        float elapsedTime = 0.0f;
+        
+        while (elapsedTime <= duration)
+        {
+            _currentOpacity = Mathf.Lerp(this._currentOpacity, targetOpacity, Math.Min(elapsedTime / duration, 1.0f));
+            _foreground.color = new Color(1f, 1f, 1f, _currentOpacity);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        opacity = targetOpacity;
-        foreground.color = new Color(1f, 1f, 1f, opacity);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private float CalculateDuration(float targetOpacity)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(FadeOutSprite(0.7f, 1.0f, 0.7f));
-        }
+        return Math.Abs(_currentOpacity - targetOpacity) / opacityPerSecond;
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void StopLastFade()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(FadeOutSprite(0.4f, 0.7f, 1.0f));
-        }
+        if (_lastFade != null)
+            StopCoroutine(_lastFade);
     }
 }
