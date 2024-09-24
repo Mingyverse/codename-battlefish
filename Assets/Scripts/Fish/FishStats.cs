@@ -1,6 +1,9 @@
-public struct FishStats
+using System;
+
+public class FishStats
 {
-    public struct Stats
+    [Serializable]
+    public class Stats
     {
         public float maxHp;
         public float attack;

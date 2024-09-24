@@ -4,8 +4,7 @@ using UnityEngine;
 public class BattleFish : MonoBehaviour
 {
     public BattleFishBase battleFishBase = default!;
-    public FishStats stats;
-    
+    [NonSerialized] public FishStats stats = default!;
     [NonSerialized] public Health health = default!;
     [NonSerialized] public Level level;
 
