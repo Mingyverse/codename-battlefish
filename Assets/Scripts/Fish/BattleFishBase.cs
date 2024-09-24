@@ -7,8 +7,10 @@ public class BattleFishBase : ScriptableObject
     public string description = default!;
     public FishRarity rarity;
     public WaterType waterType;
-    public FishStats.Stats baseStats;
-    public FishStats.Stats levelUpStats;
+    public FishStats.Stats baseStats = default!;
+    public FishStats.Stats levelUpStats = default!;
     public FishClass fishClass;
     public XpScaling xpScaling;
+    public FishAbility ability = default!;
+    public FishAI ai = default!;
 }

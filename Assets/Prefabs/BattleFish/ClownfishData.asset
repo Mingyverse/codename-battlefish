@@ -16,5 +16,25 @@ MonoBehaviour:
   description: 
   rarity: 1
   waterType: 1
+  baseStats:
+    maxHp: 0
+    attack: 0
+    defense: 0
+    attackSpeed: 0
+    criticalRate: 0
+    criticalMultiplier: 0
+    range: 0
+    xpMultiplier: 0
+  levelUpStats:
+    maxHp: 0
+    attack: 0
+    defense: 0
+    attackSpeed: 0
+    criticalRate: 0
+    criticalMultiplier: 0
+    range: 0
+    xpMultiplier: 0
   fishClass: 1
   xpScaling: 10
+  ability: {fileID: -7599907042483152822, guid: a4ed096ea8802684f8ceb559f9bda963, type: 3}
+  ai: {fileID: 3137432405255037472, guid: 68ec83ff4fb20694ab2f52c06882285e, type: 3}
