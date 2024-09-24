@@ -7,14 +7,13 @@ public class TransparentFG : MonoBehaviour
 {
     public float opacityPerSecond = 1.0f;
     
-    private SpriteRenderer _foreground = default!;
-    private float _currentOpacity = 1.0f;
+    private SpriteRenderer _sprite = default!;
     private IEnumerator? _lastFade;
     
     void Start()
     {
-        _foreground = GetComponent<SpriteRenderer>();
-        Assert.IsNotNull(_foreground);
+        _sprite = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(_sprite);
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,19 +42,26 @@ public class TransparentFG : MonoBehaviour
     {
         float duration = CalculateDuration(targetOpacity);
         float elapsedTime = 0.0f;
+        Color color;
         
-        while (elapsedTime <= duration)
+        do
         {
-            _currentOpacity = Mathf.Lerp(this._currentOpacity, targetOpacity, Math.Min(elapsedTime / duration, 1.0f));
-            _foreground.color = new Color(1f, 1f, 1f, _currentOpacity);
+            color = _sprite.color;
+            color.a = Mathf.Lerp(_sprite.color.a, targetOpacity, Math.Min(elapsedTime / duration, 1.0f));
+            _sprite.color = color;
+
             elapsedTime += Time.deltaTime;
             yield return null;
-        }
+        } while (elapsedTime < duration);
+
+        // always set targetOpacity in case of elapsedTime > duration
+        color.a = targetOpacity;
+        _sprite.color = color;
     }
 
     private float CalculateDuration(float targetOpacity)
     {
-        return Math.Abs(_currentOpacity - targetOpacity) / opacityPerSecond;
+        return Math.Abs(_sprite.color.a - targetOpacity) / opacityPerSecond;
     }
 
     private void StopLastFade()
