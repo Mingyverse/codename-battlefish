@@ -1,15 +1,24 @@
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public abstract class FishAbility : MonoBehaviour
 {
-    public string abilityName = default!;
+    public string abilityName = "";
     public float cooldownDuration;
-    
-    private float _lastProc = 0;
-    
+
+    protected BattleFish fish = default!;
+    protected float lastProc = 0;
+
+    private void Awake()
+    {
+        fish = GetComponent<BattleFish>();
+        Assert.IsNotNull(fish);
+    }
+
     public bool CanActivate()
     {
-        return Time.time > _lastProc + cooldownDuration;
+        return Time.time > lastProc + cooldownDuration;
     }
     
     public abstract void Activate();

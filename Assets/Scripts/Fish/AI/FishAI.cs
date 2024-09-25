@@ -1,47 +1,108 @@
 using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using UnityEngine.Assertions;
 
 public abstract class FishAI : MonoBehaviour
 {
-    public float maxSpeed = 1;
+    public float maxSpeed = 10;
+    public float maxStamina = 100; 
+    public float stamina;
 
-    protected GameObject? cachedTarget; 
-    protected float lastAttack = 0;
-    protected GameObject[] targets = default!;
+    public float staminaUsePerSecond = 10;
+    public float staminaRestorePerSecond = 20;
+    public float staminaRestoreDelay = 2;
+
+    protected bool staminaFatigue;
+    protected float lastStaminaUse;
+    protected bool isRestoringStamina;
+
+    protected BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
     protected FishAbility ability = default!;
-    protected Rigidbody2D rb = default!;
-    protected CircleCollider2D col = default!;
+    protected Rigidbody2D fishRb = default!;
     
-
-    public void Start()
+    public void Awake()
     {
-        fish = GetComponentInParent<BattleFish>();
-        ability = fish.GetComponentInChildren<FishAbility>();
-        rb = fish.GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
-
-        if (fish.CompareTag("Team1"))
-            targets = GameObject.FindGameObjectsWithTag("Team2");
-        else
-            targets = GameObject.FindGameObjectsWithTag("Team1");
+        stamina = maxStamina;
         
-        cachedTarget = GetTarget();
+        ability = GetComponent<FishAbility>();
+        Assert.IsNotNull(ability);
+        
+        fish = GetComponent<BattleFish>();
+        Assert.IsNotNull(fish);
+        
+        fishRb = fish.GetComponent<Rigidbody2D>();
+        Assert.IsNotNull(fishRb);
     }
 
-    public void Update()
+    private void FixedUpdate()
     {
-        if (CanAttack())
-            Attack();
-        
         if (CanMove())
             Move();
-        
+    }
+
+    private void Update()
+    {
+        if (CanRestoreStamina() && !isRestoringStamina)
+            StartCoroutine(StartRestoreStamina());
+
         if (ability.CanActivate())
             ability.Activate();
+    }
+
+    public float GetStaminaSpeed()
+    {
+        switch (stamina)
+        {
+            case <= 0:
+                return 0.4f;
+            case <= 20:
+                return 0.6f;
+            case <= 60:
+                return 1f;
+            case <= 100:
+                return 1.5f;
+            default:
+                return 1.6f + stamina / 1000.0f;
+        }
+    }
+    
+    protected void RestoreStamina(float amount)
+    {
+        stamina += amount;
+        stamina = Math.Min(stamina, maxStamina);
+
+        if (stamina >= maxStamina - 0.0001f)
+            staminaFatigue = false;
+    }
+
+    protected void ConsumeStamina(float amount)
+    {
+        stamina -= amount;
+        stamina = Math.Max(stamina, 0);
+        
+        lastStaminaUse = Time.time;
+
+        if (stamina <= 0 + 0.0001f)
+            staminaFatigue = true;
+    }
+
+    protected bool CanRestoreStamina()
+    {
+        return stamina < maxStamina && lastStaminaUse + staminaRestoreDelay < Time.time;
+    }
+    
+    protected IEnumerator StartRestoreStamina()
+    {
+        isRestoringStamina = true;
+        while (CanRestoreStamina())
+        {
+            RestoreStamina(staminaRestorePerSecond * Time.deltaTime);
+            yield return null;
+        }
+        isRestoringStamina = false;
     }
 
     public bool CanMove()
@@ -49,12 +110,6 @@ public abstract class FishAI : MonoBehaviour
         return true;
     }
 
-    public bool CanAttack()
-    {
-        return Time.time > lastAttack + fish.stats.attackSpeed;
-    }
-
     public abstract void Move();
-    public abstract void Attack();
     public abstract GameObject? GetTarget();
 }
