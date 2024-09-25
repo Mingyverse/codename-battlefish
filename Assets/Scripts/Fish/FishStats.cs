@@ -13,7 +13,37 @@ public class FishStats
         public float criticalMultiplier;
         public float range; 
         public float xpMultiplier;
-
+        
+        public static Stats operator +(Stats lhs, Stats rhs)
+        {
+            return new Stats
+            {
+                maxHp = lhs.maxHp + rhs.maxHp,
+                attack = lhs.attack + rhs.attack,
+                defense = lhs.defense + rhs.defense,
+                attackSpeed = lhs.attack + rhs.attack,
+                criticalRate = lhs.criticalRate + rhs.criticalRate,
+                criticalMultiplier = lhs.criticalMultiplier + rhs.criticalMultiplier,
+                range = lhs.range + rhs.range,
+                xpMultiplier = lhs.xpMultiplier + rhs.xpMultiplier
+            };
+        }
+        
+        public static Stats operator *(Stats lhs, float rhs)
+        {
+            return new Stats
+            {
+                maxHp = lhs.maxHp * rhs,
+                attack = lhs.attack * rhs,
+                defense = lhs.defense * rhs,
+                attackSpeed = lhs.attack * rhs,
+                criticalRate = lhs.criticalRate * rhs,
+                criticalMultiplier = lhs.criticalMultiplier * rhs,
+                range = lhs.range * rhs,
+                xpMultiplier = lhs.xpMultiplier * rhs
+            };
+        }
+        
         public static Stats Zeros()
         {
             return new Stats
@@ -42,7 +72,7 @@ public class FishStats
                 range = 1.0f,
                 xpMultiplier = 1.0f
             };
-        } 
+        }
     }
     
     public FishStats() {}
@@ -59,4 +89,14 @@ public class FishStats
     public float criticalMultiplier => (baseStats.criticalMultiplier + constantStats.criticalMultiplier) * multiplierStats.criticalMultiplier;
     public float range => (baseStats.range + constantStats.range) * multiplierStats.range; 
     public float xpMultiplier => (baseStats.xpMultiplier + constantStats.xpMultiplier) * multiplierStats.xpMultiplier;
+
+    public static FishStats FromFish(BattleFish fish)
+    {
+        Stats baseStats = fish.battleFishBase.baseStats;
+        Stats leveledStats = fish.battleFishBase.levelUpStats * (fish.level.value - 1);
+        return new FishStats
+        {
+            baseStats = baseStats + leveledStats,
+        };
+    }
 }
