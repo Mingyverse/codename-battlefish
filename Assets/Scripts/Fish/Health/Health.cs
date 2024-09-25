@@ -5,10 +5,10 @@ using UnityEngine.Assertions;
 
 public class Health : MonoBehaviour
 {
-    public float value;
     public float timeToPassiveHeal = 5;
     public float passiveHealPerSecond = 1;
     
+    [NonSerialized] public float value;
     public float maxHp => _fish.stats.maxHp;
     public float percentage => value / maxHp;
 
@@ -25,7 +25,10 @@ public class Health : MonoBehaviour
     private void Awake() {
         _fish = GetComponent<BattleFish>();
         Assert.IsNotNull(_fish);
-        
+    }
+
+    private void Start()
+    {
         value = maxHp;
     }
 
