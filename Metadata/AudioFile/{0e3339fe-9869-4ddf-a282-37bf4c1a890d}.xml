@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0e3339fe-9869-4ddf-a282-37bf4c1a890d}">
+		<property name="assetPath">
+			<value>Outcast Of The Sulphurous Seas.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>161.69999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{28a5bab8-a87e-44b3-b716-a4872749a41e}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{56e7b3bf-4e21-4463-8066-5c63675571ee}">
+		<property name="assetPath">
+			<value>kenney_interface-sounds/Audio/click_002.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.010022675736961452</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{28a5bab8-a87e-44b3-b716-a4872749a41e}</destination>
+		</relationship>
+	</object>
+</objects>

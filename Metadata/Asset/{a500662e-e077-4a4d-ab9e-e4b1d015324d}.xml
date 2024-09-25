@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{a500662e-e077-4a4d-ab9e-e4b1d015324d}">
+		<property name="assetPath">
+			<value>kenney_interface-sounds/Audio/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{28a5bab8-a87e-44b3-b716-a4872749a41e}</destination>
+		</relationship>
+	</object>
+</objects>
