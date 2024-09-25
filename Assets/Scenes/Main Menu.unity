@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e234c19edb8d64d928a8aa7c37b685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Diving
+  nextScene: MapSelect
 --- !u!1 &980765537
 GameObject:
   m_ObjectHideFlags: 0
