@@ -1,9 +1,21 @@
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class HealthBar : MonoBehaviour
 {
     private BattleFish _fish = default!;
-    
+    private SpriteRenderer _sprite = default!;
+
+    private void Awake()
+    {
+        _fish = GetComponentInParent<BattleFish>();
+        Assert.IsNotNull(_fish);
+        
+        _sprite = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(_sprite);
+    }
+
     private void Start()
     {
         _fish = GetComponentInParent<BattleFish>();
