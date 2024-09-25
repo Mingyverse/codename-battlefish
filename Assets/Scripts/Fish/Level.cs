@@ -1,6 +1,7 @@
-public struct Level
+public class Level
 {
     private BattleFish _fish;
+    
     public int value { get; private set; } = 0;
     public int experience { get; private set; } = 0;
  
