@@ -3091,21 +3091,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2110492887}
-    - target: {fileID: 120489462245717076, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 120489462245717076, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1527327193
-      objectReference: {fileID: 0}
     - target: {fileID: 2455012184442482918, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
       propertyPath: m_Name
       value: PauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731069653755571946, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3272423310418566398, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
       propertyPath: m_Pivot.x
@@ -3185,22 +3173,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3272423310418566398, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153123031633783581, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6613012464909967132, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8196226865230064862, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9062558105096442855, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3476,7 +3448,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1527327193
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &3137172471825682506
