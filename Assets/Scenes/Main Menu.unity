@@ -1198,8 +1198,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Codename:\n BattleFish"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4aaf195451c8325418e5519e25ab9f0a, type: 2}
-  m_sharedMaterial: {fileID: -1240335135105171899, guid: 4aaf195451c8325418e5519e25ab9f0a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8bbb6bdcaa0cc0b48ab663c38798b498, type: 2}
+  m_sharedMaterial: {fileID: -1240335135105171899, guid: 8bbb6bdcaa0cc0b48ab663c38798b498, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
