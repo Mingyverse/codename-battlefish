@@ -1606,8 +1606,8 @@ Canvas:
   m_GameObject: {fileID: 1253822306}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 2110492887}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3087,6 +3087,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 120489462245717076, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2110492887}
+    - target: {fileID: 120489462245717076, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120489462245717076, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1527327193
+      objectReference: {fileID: 0}
     - target: {fileID: 2455012184442482918, guid: 4952b85f92da01f4093bb0d063f8426b, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -3453,8 +3465,8 @@ Canvas:
   m_GameObject: {fileID: 702110049950826631}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 2110492887}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
