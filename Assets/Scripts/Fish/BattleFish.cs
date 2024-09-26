@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 public class BattleFish : MonoBehaviour
 {
-    public BattleFishBase battleFishBase = default!;
+    [FormerlySerializedAs("battleFishBase")] public BattleFishData battleFishData = default!;
     [NonSerialized] public FishStats stats = default!;
     [NonSerialized] public Health health = default!;
     [NonSerialized] public Level level = default!;
@@ -13,7 +14,7 @@ public class BattleFish : MonoBehaviour
     
     private void Awake()
     {
-        Assert.IsNotNull(battleFishBase);
+        Assert.IsNotNull(battleFishData);
         
         level = new Level(this);   // TODO: save in persistence
         

@@ -92,8 +92,8 @@ public class FishStats
 
     public static FishStats FromFish(BattleFish fish)
     {
-        Stats baseStats = fish.battleFishBase.baseStats;
-        Stats leveledStats = fish.battleFishBase.levelUpStats * (fish.level.value - 1);
+        Stats baseStats = fish.battleFishData.baseStats;
+        Stats leveledStats = fish.battleFishData.levelUpStats * (fish.level.value - 1);
         return new FishStats
         {
             baseStats = baseStats + leveledStats,

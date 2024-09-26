@@ -16,7 +16,7 @@ public class Level
     {
         experience += (int) (exp * _fish.stats.xpMultiplier);
 
-        if (experience > _fish.battleFishBase.xpScaling.GetRequiredXp(value + 1))
+        if (experience > _fish.battleFishData.xpScaling.GetRequiredXp(value + 1))
         {
             value++;
             return true;
