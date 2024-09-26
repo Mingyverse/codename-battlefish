@@ -1813,8 +1813,8 @@ MonoBehaviour:
       Data4: 1819498426
     Path: event:/UI_Hover
   Event: 
-  PlayEvent: 18
-  StopEvent: 19
+  PlayEvent: 17
+  StopEvent: 18
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
