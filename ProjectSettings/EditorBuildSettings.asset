@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CGD assignment.unity
-    guid: 93a202c8d6b63ea44b92eed692a0050a
+    path: Assets/Scenes/StartMenu.unity
+    guid: b139252110190ea4f984d945c6cd5996
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 7ba107ee373e4624298eff0802906711
   - enabled: 1
     path: Assets/Scenes/Almanac.unity
