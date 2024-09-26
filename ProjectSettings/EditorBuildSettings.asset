@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Almanac.unity
     guid: aba40c9998195934287a105085097a57
   - enabled: 1
+    path: Assets/Scenes/Aquarium.unity
+    guid: e8424709423dbe74aa6614e0aaeed658
+  - enabled: 1
     path: Assets/Scenes/MapSelect.unity
     guid: 70f0345db49cdda448e8453912fbc88b
   - enabled: 1
