@@ -15,4 +15,9 @@ public class BattleFishData : ScriptableObject
     public XpScaling xpScaling;
     public SpriteSkin previewSprite = default!;
     public SpriteSkin spriteSkin = default!;
+
+    public static BattleFishData[] GetAll()
+    {
+        return Resources.LoadAll<BattleFishData>("BattleFishData");
+    }
 }
