@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a51f81bc4804490bde89ac3712e4891, type: 3}
   m_Name: BettaData
   m_EditorClassIdentifier: 
+  id: betta
   fishName: Betta
   description: 
   rarity: 2
@@ -36,5 +37,5 @@ MonoBehaviour:
     xpMultiplier: 0
   fishClass: 1
   xpScaling: 10
-  ability: {fileID: -7599907042483152822, guid: a4ed096ea8802684f8ceb559f9bda963, type: 3}
-  ai: {fileID: 3137432405255037472, guid: 68ec83ff4fb20694ab2f52c06882285e, type: 3}
+  previewSprite: {fileID: 5877639352123858649, guid: 8d29a07ce2bbcad4e9353e700705e108, type: 3}
+  spriteSkin: {fileID: 5877639352123858649, guid: 8d29a07ce2bbcad4e9353e700705e108, type: 3}
