@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: dorsal fin
+  - name: Dorsal Fin
     originalName: 
     pivot: {x: 2.0357144, y: -1.5454545}
     alignment: 9
@@ -134,7 +134,7 @@ ScriptedImporter:
       height: 22
     spriteID: 209559eab7df1023488175f4032be312
     spriteBone:
-    - name: bone_1
+    - name: Dorsal Fin 1
       guid: b96793cb6a9c4cf3c9ba6c124c17bb26
       position: {x: 25.367317, y: 4.4900208, z: 0}
       rotation: {x: 0, y: 0, z: 0.7258035, w: 0.6879021}
@@ -147,7 +147,7 @@ ScriptedImporter:
     vertices:
     - position: {x: 24.503, y: 0.47299957}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -157,7 +157,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 28, y: 2}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -167,7 +167,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 27.967, y: 7}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -287,7 +287,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 8.413412, y: 7.2408795}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -297,7 +297,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 8.908, y: 6.242}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -307,7 +307,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 10.287, y: 3.381}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -317,7 +317,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 13.813, y: 0.4870005}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -327,7 +327,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 19.629, y: 0.12699986}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -359,7 +359,7 @@ ScriptedImporter:
     - {x: 17, y: 18}
     tessellationDetail: 0
     uvTransform: {x: 73, y: 4}
-  - name: Tail fin
+  - name: Tail Fin
     originalName: 
     pivot: {x: 2.5172415, y: -0.33333334}
     alignment: 9
@@ -372,7 +372,7 @@ ScriptedImporter:
       height: 39
     spriteID: c52a7652ea960b81485c0dfec754bab3
     spriteBone:
-    - name: bone_1
+    - name: Tail Fin 1
       guid: a732562aa01ebe3a5b62dacc002a379c
       position: {x: 28.401794, y: 23.710838, z: 0}
       rotation: {x: 0, y: 0, z: -0.99999386, w: 0.0035082786}
@@ -381,37 +381,37 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278190335
-    - name: bone_2
+    - name: Tail Fin Top 1
       guid: 7a636824c4c699eb4af66ab123da19f4
       position: {x: -0.1655924, y: -1.4494503, z: 0}
-      rotation: {x: 0, y: 0, z: -0.4276282, w: 0.90395474}
-      length: 10.042526
+      rotation: {x: 0, y: 0, z: -0.42762828, w: 0.9039547}
+      length: 10.042523
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255615
-    - name: bone_3
+    - name: Tail Fin Top 2
       guid: 96991dc33b96f5943b6fea1690f3493a
-      position: {x: 10.042523, y: -0.0000013613296, z: 0}
-      rotation: {x: 0, y: 0, z: 0.26854292, w: 0.96326774}
+      position: {x: 10.042524, y: 0.000001484851, z: 0}
+      rotation: {x: 0, y: 0, z: 0.26854306, w: 0.96326774}
       length: 13.156021
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255360
-    - name: bone_4
+    - name: Tail Fin Bottom 1
       guid: 08fb521537515e003828a5c050b75927
       position: {x: 0.63329035, y: 1.6533942, z: 0}
-      rotation: {x: 0, y: 0, z: 0.5433623, w: 0.8394983}
-      length: 9.510357
+      rotation: {x: 0, y: 0, z: 0.54336214, w: 0.8394984}
+      length: 9.510356
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294967040
-    - name: bone_5
+    - name: Tail Fin Bottom 2
       guid: 863103e0051d656238302cefd4206572
-      position: {x: 9.510356, y: -0.000002378891, z: 0}
-      rotation: {x: 0, y: 0, z: -0.10983855, w: 0.9939495}
+      position: {x: 9.510355, y: -0.00000011476624, z: 0}
+      rotation: {x: 0, y: 0, z: -0.10983833, w: 0.9939495}
       length: 11.004032
       parentId: 3
       color:
@@ -461,7 +461,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 27.993, y: 15.82}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -471,7 +471,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 28.805, y: 20.569}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -481,7 +481,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 28.899, y: 25.55}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -491,7 +491,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 28.635, y: 30.416}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -690,7 +690,7 @@ ScriptedImporter:
         boneIndex2: 0
         boneIndex3: 0
     spritePhysicsOutline: []
-    indices: 000000001800000001000000000000001900000018000000000000001a00000019000000010000001800000002000000020000001800000003000000030000001800000004000000040000001200000005000000040000001800000012000000050000000f0000000600000005000000110000000f000000050000001200000011000000060000000800000007000000060000000f00000008000000080000000a00000009000000080000000f0000000a0000000a0000000f0000000b0000000b0000000f0000000c0000000c0000000f0000000d0000000d0000000f0000000e0000000f0000001100000010000000120000001500000013000000120000001800000015000000130000001500000014000000150000001800000016000000160000001800000017000000
+    indices: 0000000018000000010000001300000015000000140000001200000018000000150000001200000015000000130000000f00000011000000100000000d0000000f0000000e0000000c0000000f0000000d0000000b0000000f0000000c0000000a0000000f0000000b000000080000000f0000000a000000080000000a00000009000000150000001800000016000000060000000f0000000800000005000000120000001100000005000000110000000f000000050000000f00000006000000040000001800000012000000040000001200000005000000030000001800000004000000020000001800000003000000010000001800000002000000000000001a00000019000000000000001900000018000000060000000800000007000000160000001800000017000000
     edges:
     - {x: 0, y: 1}
     - {x: 0, y: 26}
@@ -721,7 +721,7 @@ ScriptedImporter:
     - {x: 25, y: 26}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: pelvic fin
+  - name: Pelvic Fin
     originalName: 
     pivot: {x: 2.0416665, y: -0.26923078}
     alignment: 9
@@ -734,7 +734,7 @@ ScriptedImporter:
       height: 26
     spriteID: 71576c328d590a8bdab9531d254a4d0b
     spriteBone:
-    - name: bone_1
+    - name: Pelvic Fin 1
       guid: c9ef379a3b66f393c86ad07da829ed04
       position: {x: 20.568691, y: 22.830133, z: 0}
       rotation: {x: 0, y: 0, z: -0.6863681, w: 0.72725433}
@@ -827,7 +827,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 22.458, y: 24.154}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -837,7 +837,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 18.265, y: 25.081001}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -847,7 +847,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 13.705, y: 25.805}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -857,7 +857,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 8.727, y: 25.93}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -867,7 +867,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 3.823, y: 25.576}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -877,7 +877,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 0.1036124, y: 25.433155}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -981,7 +981,7 @@ ScriptedImporter:
     - {x: 19, y: 20}
     tessellationDetail: 0
     uvTransform: {x: 41, y: 4}
-  - name: body
+  - name: Body
     originalName: 
     pivot: {x: 1.3529413, y: -2}
     alignment: 9
@@ -994,7 +994,7 @@ ScriptedImporter:
       height: 14
     spriteID: 2911aa0aa0e581c17964d8160888e647
     spriteBone:
-    - name: bone_1
+    - name: Body 1
       guid: 0762341599bb8f56dadc94a3c31063ae
       position: {x: 1.0953674, y: 7.211521, z: 0}
       rotation: {x: 0, y: 0, z: 0.13985424, w: 0.9901721}
@@ -1003,19 +1003,19 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278190335
-    - name: bone_2
+    - name: Body 2
       guid: caace02a7098a820e9a08d6781addbc2
       position: {x: 15.371633, y: -0.00000017486423, z: 0}
-      rotation: {x: 0, y: 0, z: -0.19887605, w: 0.98002464}
-      length: 9.451223
+      rotation: {x: 0, y: 0, z: -0.19887619, w: 0.98002464}
+      length: 9.4512205
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255615
-    - name: bone_3
+    - name: Body 3
       guid: 98e2238f93246aea98528981811573ad
-      position: {x: 9.451222, y: -0.00000066803466, z: 0}
-      rotation: {x: 0, y: 0, z: -0.17739333, w: 0.9841401}
+      position: {x: 9.4512205, y: -0.000000033186865, z: 0}
+      rotation: {x: 0, y: 0, z: -0.1773932, w: 0.9841401}
       length: 9.093002
       parentId: 1
       color:
@@ -1226,7 +1226,7 @@ ScriptedImporter:
     - {x: 16, y: 17}
     tessellationDetail: 0
     uvTransform: {x: 41, y: 38}
-  - name: eye
+  - name: Eye
     originalName: 
     pivot: {x: 8.499999, y: -17}
     alignment: 9
