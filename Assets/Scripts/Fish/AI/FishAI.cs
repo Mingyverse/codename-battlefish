@@ -10,7 +10,7 @@ public abstract class FishAI : MonoBehaviour
     public float maxStamina = 100; 
     public float stamina;
 
-    public float staminaUsePerSecond = 10;
+    public float staminaUsePerSecond = 20;
     public float staminaRestorePerSecond = 20;
     public float staminaRestoreDelay = 2;
 
@@ -23,11 +23,16 @@ public abstract class FishAI : MonoBehaviour
     protected float waitUntilNextPassiveSwim;
 
     protected Vector2 lastTarget;
+    protected bool isInCollision;
     protected BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
     protected FishAbility ability = default!;
     protected Rigidbody2D fishRb = default!;
+    protected Animator animator = default!;
+    protected SpriteRenderer spriteRenderer = default!;
+    
+    protected int animSwimming = Animator.StringToHash("Swimming");
     
     public void Awake()
     {
@@ -41,6 +46,12 @@ public abstract class FishAI : MonoBehaviour
         
         fishRb = fish.GetComponent<Rigidbody2D>();
         Assert.IsNotNull(fishRb);
+        
+        animator = GetComponent<Animator>();
+        Assert.IsNotNull(animator);
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(spriteRenderer);
     }
 
     private void FixedUpdate()
@@ -56,6 +67,21 @@ public abstract class FishAI : MonoBehaviour
 
         if (ability.CanActivate())
             ability.Activate();
+        
+        animator.SetBool(animSwimming, fishRb.velocity.sqrMagnitude > 1);
+        
+        if (fishRb.velocity.x < 0) spriteRenderer.flipX = true;
+        else if (fishRb.velocity.x > 0) spriteRenderer.flipX = false;
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        isInCollision = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        isInCollision = false;
     }
 
     public float GetStaminaSpeed()
@@ -65,13 +91,13 @@ public abstract class FishAI : MonoBehaviour
             case <= 0:
                 return 0.4f;
             case <= 20:
-                return 0.6f;
+                return 0.7f;
             case <= 60:
                 return 1f;
             case <= 100:
-                return 1.5f;
+                return 2f;
             default:
-                return 1.6f + stamina / 1000.0f;
+                return 2.1f + stamina / 1000.0f;
         }
     }
     
@@ -113,7 +139,7 @@ public abstract class FishAI : MonoBehaviour
     
     protected Vector2 GetRandomDirection()
     {
-        float x = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(0.8f, 1.6f);
+        float x = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(1f, 2f);
         float y = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(0.1f, 0.2f);
 
         return new Vector2(x, y);
@@ -123,11 +149,18 @@ public abstract class FishAI : MonoBehaviour
     {
         if (Time.time < waitUntilNextPassiveSwim)
             return;
-            
-        lastTarget = GetRandomDirection();
+
+        if (isInCollision)
+        {
+            lastTarget = GetRandomDirection();
+            lastTarget.y += -transform.position.y;
+            lastTarget.x += -transform.position.x;
+        }
+        else
+            lastTarget = GetRandomDirection();
         waitUntilNextPassiveSwim = Time.time + Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay);
             
-        float speed = GetStaminaSpeed();
+        float speed = Random.Range(0.5f, 1.2f);
         fishRb.AddForce(lastTarget.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
     }
 
@@ -137,4 +170,5 @@ public abstract class FishAI : MonoBehaviour
     }
 
     public abstract void Move();
+    public abstract GameObject? GetTarget();
 }
