@@ -6,7 +6,7 @@ using UnityEngine;
 public class StageController : MonoBehaviour
 {
     [NonSerialized] public GameObject? player; 
-    [NonSerialized] public BattleFish[] fishes = Array.Empty<BattleFish>();
+    [NonSerialized] public BattleFish[] wildFishes = Array.Empty<BattleFish>();
     
     public static StageController instance = default!;
 
@@ -18,7 +18,7 @@ public class StageController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        fishes = FindObjectsOfType<BattleFish>();
+        wildFishes = FindObjectsOfType<BattleFish>();
     }
     
     public Transform? GetClosestFish(Transform position, Predicate<BattleFish> predicate)
@@ -27,7 +27,7 @@ public class StageController : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
         
-        foreach(BattleFish fish in fishes)
+        foreach(BattleFish fish in wildFishes)
         {
             if (!predicate(fish))
                 continue;
