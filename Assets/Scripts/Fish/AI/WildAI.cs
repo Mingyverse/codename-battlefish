@@ -12,11 +12,18 @@ public class WildAI : FishAI
     public override void Move()
     {
         GameObject? target = GetTarget();
+
+        if (!target)
+        {
+            PassiveSwim();
+            return;
+        }
+
         #pragma warning disable
         Vector2 direction = target.transform.position - transform.position;
         float distanceSqr = direction.sqrMagnitude;
         #pragma warning restore
-        
+
         if (distanceSqr > fleeDistance * fleeDistance)
         {
             if (IsCalm())
