@@ -70,8 +70,8 @@ public abstract class FishAI : MonoBehaviour
         
         animator.SetBool(animSwimming, fishRb.velocity.sqrMagnitude > 1);
         
-        if (fishRb.velocity.x < 0) spriteRenderer.flipX = true;
-        else if (fishRb.velocity.x > 0) spriteRenderer.flipX = false;
+        if (fishRb.velocity.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+        else if (fishRb.velocity.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnCollisionStay2D(Collision2D other)
