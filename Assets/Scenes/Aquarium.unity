@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e234c19edb8d64d928a8aa7c37b685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Main Menu
+  nextScene: MainMenu
 --- !u!114 &7967750922050155233
 MonoBehaviour:
   m_ObjectHideFlags: 0

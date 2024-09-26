@@ -464,8 +464,7 @@ MonoBehaviour:
   m_text: Fish Guide
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb1f4350a0b1e214aa85ec682fb17feb, type: 2}
-  m_sharedMaterial: {fileID: 7147482095859927384, guid: cb1f4350a0b1e214aa85ec682fb17feb,
-    type: 2}
+  m_sharedMaterial: {fileID: 7147482095859927384, guid: cb1f4350a0b1e214aa85ec682fb17feb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1073,8 +1072,7 @@ MonoBehaviour:
   m_text: ALL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
-  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095,
-    type: 2}
+  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1391,8 +1389,7 @@ MonoBehaviour:
   m_text: ALL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
-  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095,
-    type: 2}
+  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1773,7 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e234c19edb8d64d928a8aa7c37b685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Main Menu
+  nextScene: MainMenu
 --- !u!95 &238087469
 Animator:
   serializedVersion: 5
@@ -2187,8 +2184,7 @@ MonoBehaviour:
   m_text: ALL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
-  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095,
-    type: 2}
+  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5188,8 +5184,7 @@ MonoBehaviour:
   m_text: ALL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
-  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095,
-    type: 2}
+  m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7013,8 +7008,7 @@ MonoBehaviour:
   m_text: Fish Guide
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb1f4350a0b1e214aa85ec682fb17feb, type: 2}
-  m_sharedMaterial: {fileID: 7147482095859927384, guid: cb1f4350a0b1e214aa85ec682fb17feb,
-    type: 2}
+  m_sharedMaterial: {fileID: 7147482095859927384, guid: cb1f4350a0b1e214aa85ec682fb17feb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
