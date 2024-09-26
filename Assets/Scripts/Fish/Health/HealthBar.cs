@@ -4,16 +4,16 @@ using UnityEngine.Assertions;
 
 public class HealthBar : MonoBehaviour
 {
+    public SpriteRenderer sprite = default!;
+    
     private BattleFish _fish = default!;
-    private SpriteRenderer _sprite = default!;
 
     private void Awake()
     {
         _fish = GetComponentInParent<BattleFish>();
         Assert.IsNotNull(_fish);
         
-        _sprite = GetComponent<SpriteRenderer>();
-        Assert.IsNotNull(_sprite);
+        Assert.IsNotNull(sprite);
     }
 
     private void Start()
@@ -25,10 +25,10 @@ public class HealthBar : MonoBehaviour
 
     private void OnHealthChange(Health health, float value)
     {
-        Vector3 scale = transform.localScale;
+        Vector3 scale = sprite.transform.localScale;
         scale.x = health.percentage;
         
-        transform.localScale = scale;
+        sprite.transform.localScale = scale;
     }
 
     private void OnDestroy()
