@@ -7,8 +7,8 @@ public class Health : MonoBehaviour
 {
     public float timeToPassiveHeal = 5;
     public float passiveHealPerSecond = 1;
+    public float value;
     
-    [NonSerialized] public float value;
     public float maxHp => _fish.stats.maxHp;
     public float percentage => value / maxHp;
 
