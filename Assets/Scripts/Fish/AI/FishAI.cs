@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 public abstract class FishAI : MonoBehaviour
 {
@@ -13,10 +14,15 @@ public abstract class FishAI : MonoBehaviour
     public float staminaRestorePerSecond = 20;
     public float staminaRestoreDelay = 2;
 
+    public float passiveSwimMinDelay = 0.2f;
+    public float passiveSwimMaxDelay = 3f;
+    
     protected bool staminaFatigue;
     protected float lastStaminaUse;
     protected bool isRestoringStamina;
+    protected float waitUntilNextPassiveSwim;
 
+    protected Vector2 lastTarget;
     protected BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
@@ -104,12 +110,38 @@ public abstract class FishAI : MonoBehaviour
         }
         isRestoringStamina = false;
     }
+    
+    protected Vector2 GetRandomDirection()
+    {
+        float x = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(0.8f, 1.6f);
+        float y = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(0.1f, 0.2f);
+
+        return new Vector2(x, y);
+    }
+
+    protected void PassiveSwim()
+    {
+        if (Time.time < waitUntilNextPassiveSwim)
+            return;
+            
+        lastTarget = GetRandomDirection();
+        waitUntilNextPassiveSwim = Time.time + Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay);
+            
+        float speed = GetStaminaSpeed();
+        fishRb.AddForce(lastTarget.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
+    }
 
     public bool CanMove()
     {
         return true;
     }
-
+    
+    public  GameObject? GetTarget()
+    {
+        if (lastAttacker)
+            return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag))?.gameObject;
+        return null;
+    }
+    
     public abstract void Move();
-    public abstract GameObject? GetTarget();
 }
