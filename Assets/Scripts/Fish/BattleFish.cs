@@ -5,12 +5,15 @@ using UnityEngine.Serialization;
 
 public class BattleFish : MonoBehaviour
 {
-    [FormerlySerializedAs("battleFishBase")] public BattleFishData battleFishData = default!;
+    public BattleFishData battleFishData = default!;
     [NonSerialized] public FishStats stats = default!;
     [NonSerialized] public Health health = default!;
     [NonSerialized] public Level level = default!;
     [NonSerialized] public FishAI ai = default!;
     [NonSerialized] public FishAbility ability = default!;
+    
+    [NonSerialized] public Animator animator = default!;
+    [NonSerialized] public Rigidbody2D rb = default!;
     
     private void Awake()
     {
@@ -29,5 +32,10 @@ public class BattleFish : MonoBehaviour
         ai = GetComponent<FishAI>();
         Assert.IsNotNull(ai);
         
+        animator = GetComponent<Animator>();
+        Assert.IsNotNull(animator);
+
+        rb = GetComponent<Rigidbody2D>();
+        Assert.IsNotNull(rb);
     }
 }
