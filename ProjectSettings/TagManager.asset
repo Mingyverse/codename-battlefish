@@ -59,6 +59,9 @@ TagManager:
   - name: Player
     uniqueID: 2836962401
     locked: 0
+  - name: Fish
+    uniqueID: 1836846801
+    locked: 0
   - name: Foreground
     uniqueID: 3265242749
     locked: 0
