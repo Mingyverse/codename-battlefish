@@ -40,7 +40,7 @@ public class WildAI : FishAI
 
             if (_lastProvoked < Time.time - fleeDelayAfterNotProvoked)
             {
-                fishRb.AddForce(-direction.normalized, ForceMode2D.Impulse);
+                fish.rb.AddForce(-direction.normalized, ForceMode2D.Impulse);
                 ConsumeStamina(staminaUsePerSecond / 2);
             }
             
@@ -62,7 +62,7 @@ public class WildAI : FishAI
                 ConsumeStamina(goFaster ? 1.2f : 1 * staminaUsePerSecond * Time.deltaTime);
             }
 
-            fishRb.AddForce(-direction.normalized * speed);
+            fish.rb.AddForce(-direction.normalized * speed);
         }
     }
 

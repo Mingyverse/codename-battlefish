@@ -27,31 +27,15 @@ public abstract class FishAI : MonoBehaviour
     protected BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
-    protected FishAbility ability = default!;
-    protected Rigidbody2D fishRb = default!;
-    protected Animator animator = default!;
-    protected SpriteRenderer spriteRenderer = default!;
     
     protected int animSwimming = Animator.StringToHash("Swimming");
     
     public void Awake()
     {
-        stamina = maxStamina;
-        
-        ability = GetComponent<FishAbility>();
-        Assert.IsNotNull(ability);
-        
         fish = GetComponent<BattleFish>();
         Assert.IsNotNull(fish);
-        
-        fishRb = fish.GetComponent<Rigidbody2D>();
-        Assert.IsNotNull(fishRb);
-        
-        animator = GetComponent<Animator>();
-        Assert.IsNotNull(animator);
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        Assert.IsNotNull(spriteRenderer);
+     
+        stamina = maxStamina;
     }
 
     private void FixedUpdate()
@@ -65,13 +49,13 @@ public abstract class FishAI : MonoBehaviour
         if (CanRestoreStamina() && !isRestoringStamina)
             StartCoroutine(StartRestoreStamina());
 
-        if (ability.CanActivate())
-            ability.Activate();
+        if (fish.ability.CanActivate())
+            fish.ability.Activate();
         
-        animator.SetBool(animSwimming, fishRb.velocity.sqrMagnitude > 1);
+        fish.animator.SetBool(animSwimming, fish.rb.velocity.sqrMagnitude > 1);
         
-        if (fishRb.velocity.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
-        else if (fishRb.velocity.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (fish.rb.velocity.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+        else if (fish.rb.velocity.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -161,7 +145,7 @@ public abstract class FishAI : MonoBehaviour
         waitUntilNextPassiveSwim = Time.time + Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay);
             
         float speed = Random.Range(0.5f, 1.2f);
-        fishRb.AddForce(lastTarget.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
+        fish.rb.AddForce(lastTarget.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
     }
 
     public bool CanMove()

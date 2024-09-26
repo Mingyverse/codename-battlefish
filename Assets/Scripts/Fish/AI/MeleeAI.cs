@@ -39,10 +39,10 @@ public class MeleeAI : FishAI
                 ConsumeStamina(goFaster ? 1.2f : 1 * staminaUsePerSecond * Time.deltaTime);
             }
 
-            fishRb.AddForce(lastTarget.normalized * speed);
+            fish.rb.AddForce(lastTarget.normalized * speed);
         }
         
-        fishRb.velocity = Vector2.ClampMagnitude(fishRb.velocity, maxSpeed);
+        fish.rb.velocity = Vector2.ClampMagnitude(fish.rb.velocity, maxSpeed);
     }
     
     public override GameObject? GetTarget()
