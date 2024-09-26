@@ -1,5 +1,4 @@
 using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
 
 public class MeleeAI : FishAI
 {
@@ -31,12 +30,12 @@ public class MeleeAI : FishAI
 
             #pragma warning restore
 
-            float speed = 0.5f;
+            float speed = GetStaminaSpeed();
             if (!staminaFatigue)
             {
                 bool goFaster = Random.Range(0, 6) == 0;
                 
-                speed = goFaster ? 2 : 1 * GetStaminaSpeed();
+                speed *= goFaster ? 2 : 1;
                 ConsumeStamina(goFaster ? 1.2f : 1 * staminaUsePerSecond * Time.deltaTime);
             }
 
@@ -44,5 +43,12 @@ public class MeleeAI : FishAI
         }
         
         fishRb.velocity = Vector2.ClampMagnitude(fishRb.velocity, maxSpeed);
+    }
+    
+    public override GameObject? GetTarget()
+    {
+        if (lastAttacker)
+            return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag))?.gameObject;
+        return null;
     }
 }

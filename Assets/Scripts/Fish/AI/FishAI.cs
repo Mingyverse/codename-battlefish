@@ -135,13 +135,6 @@ public abstract class FishAI : MonoBehaviour
     {
         return true;
     }
-    
-    public  GameObject? GetTarget()
-    {
-        if (lastAttacker)
-            return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag))?.gameObject;
-        return null;
-    }
-    
+
     public abstract void Move();
 }
