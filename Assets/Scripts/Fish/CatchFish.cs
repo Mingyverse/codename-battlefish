@@ -31,11 +31,13 @@ public class CatchFish : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (isCatch)
         {
             BattleFish battleFish = other.GetComponentInParent<BattleFish>();
+            if (battleFish == null) return;
+
             battleFish.gameObject.SetActive(false);
             fishCaught++;
         }
