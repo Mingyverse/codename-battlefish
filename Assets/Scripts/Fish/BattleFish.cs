@@ -18,6 +18,8 @@ public class BattleFish : MonoBehaviour
     public bool isInvul;
     public float minSpeedForDamage = 2f;
     
+    public int Swimming = Animator.StringToHash("Swimming");
+    
     private void Awake()
     {
         Assert.IsNotNull(battleFishData);
@@ -107,9 +109,10 @@ public class BattleFish : MonoBehaviour
     private void OnDeath(Health _, float _2)
     {
         rb.excludeLayers = LayerMask.GetMask("Fish");
-        rb.gravityScale = -0.01f;
+        rb.gravityScale = -0.02f;
         rb.freezeRotation = false;
-        rb.AddTorque(1.0f, ForceMode2D.Impulse);
+        rb.AddTorque(0.1f, ForceMode2D.Impulse);
+        animator.SetBool(Swimming, true);
     } 
 
     public delegate void AttackEvent(BattleFish target, BattleFish attacker);
