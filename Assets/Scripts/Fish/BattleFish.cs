@@ -71,7 +71,6 @@ public class BattleFish : MonoBehaviour
 
         float thisMag = rb.velocity.sqrMagnitude;
         float attackMag = attacker.rb.velocity.sqrMagnitude;
-        Debug.Log("thisMag" + thisMag + " attackMag = " + attackMag);
         if (thisMag > attackMag) // this fish velocity is stronger, don't take damage
             return;
 
