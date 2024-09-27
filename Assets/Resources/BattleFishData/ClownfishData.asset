@@ -19,16 +19,16 @@ MonoBehaviour:
   waterType: 1
   baseStats:
     maxHp: 70
-    attack: 41
-    defense: 17
+    attack: 5
+    defense: 2
     attackSpeed: 0.8
     criticalRate: 0.5
     criticalMultiplier: 1.5
     range: 30
     xpMultiplier: 1
   levelUpStats:
-    maxHp: 7.3
-    attack: 3.1
+    maxHp: 4
+    attack: 2
     defense: 1
     attackSpeed: 0
     criticalRate: 0
