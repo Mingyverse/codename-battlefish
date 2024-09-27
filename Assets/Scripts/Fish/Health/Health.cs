@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public float timeToPassiveHeal = 5;
     public float passiveHealPerSecond = 1;
     public float value;
+    public bool isDead;
     
     public float maxHp => _fish.stats.maxHp;
     public float percentage => value / maxHp;
@@ -38,7 +39,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (CanPassiveHeal() && !_isPassiveHealing)
+        if (CanPassiveHeal() && !_isPassiveHealing && !isDead)
             StartCoroutine(StartPassiveHeal());
     }
 
@@ -85,10 +86,13 @@ public class Health : MonoBehaviour
         value -= amount;
         value = Math.Max(value, 0);
         OnHealthLost?.Invoke(this, amount);
-        
+
         if (value <= 0)
+        {
             OnHealthDeath?.Invoke(this, amount);
-        
+            isDead = true;
+        }
+
         _lastDamage = Time.time;
     }
 
