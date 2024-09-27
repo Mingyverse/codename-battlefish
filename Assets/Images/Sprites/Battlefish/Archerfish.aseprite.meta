@@ -146,7 +146,7 @@ ScriptedImporter:
     - name: Tail Fin Bone 2
       guid: 1b486da8cf847e7009553a2a69c0868b
       position: {x: 0.50862825, y: -0.00000012167449, z: 0}
-      rotation: {x: 0, y: 0, z: 0.028129974, w: -0.9996043}
+      rotation: {x: 0, y: 0, z: 0.02812997, w: -0.9996043}
       length: 10.879081
       parentId: 0
       color:
@@ -303,16 +303,16 @@ ScriptedImporter:
     - name: Body Bone 3
       guid: df41817bd3fb4d700aeac64274265219
       position: {x: 9.868874, y: -0.00000094061886, z: 0}
-      rotation: {x: 0, y: 0, z: -0.34187, w: 0.9397473}
-      length: 12.70085
+      rotation: {x: 0, y: 0, z: -0.34186998, w: 0.9397473}
+      length: 12.700846
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: Body Bone 4
       guid: 2633de6e5d55264479cec350d2181bfb
-      position: {x: 12.700849, y: 0.0000024671895, z: 0}
-      rotation: {x: 0, y: 0, z: -0.2706257, w: 0.9626847}
+      position: {x: 12.700845, y: 0.0000005340502, z: 0}
+      rotation: {x: 0, y: 0, z: -0.27062574, w: 0.9626847}
       length: 12.669757
       parentId: 2
       color:
@@ -539,7 +539,7 @@ ScriptedImporter:
     - name: Gill Fin Bone 1
       guid: 292ded17fd32412e5b8e68438ec0c6a0
       position: {x: 4.390663, y: 1.7768211, z: 0}
-      rotation: {x: 0, y: 0, z: 0.99934894, w: 0.03608}
+      rotation: {x: 0, y: 0, z: 0.99934894, w: 0.03607916}
       length: 0.32025266
       parentId: -1
       color:
@@ -547,8 +547,8 @@ ScriptedImporter:
         rgba: 4278190335
     - name: Gill Fin Bone 2
       guid: 57501ad85c5c8eecdad5a2dcca30b47a
-      position: {x: 0.32025275, y: 0.00000018982172, z: 0}
-      rotation: {x: 0, y: 0, z: 0.026743136, w: 0.9996424}
+      position: {x: 0.3202526, y: 0.00000005610098, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0267423, w: 0.99964243}
       length: 3.4271882
       parentId: 0
       color:
@@ -660,7 +660,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 0, y: 0}
       boneWeight:
-        weight0: 0
+        weight0: 1
         weight1: 0
         weight2: 0
         weight3: 0
@@ -712,7 +712,7 @@ ScriptedImporter:
     - name: Dorsal Fin Bone 2
       guid: 815c71ef0d62f6aebbb4b1c0bbee1a13
       position: {x: 0.29039, y: 0.000000012515557, z: 0}
-      rotation: {x: 0, y: 0, z: 0.0052923374, w: 0.999986}
+      rotation: {x: 0, y: 0, z: 0.005292338, w: 0.999986}
       length: 5.488653
       parentId: 0
       color:
