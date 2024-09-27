@@ -19,9 +19,16 @@ public class Level
         if (experience > _fish.battleFishData.xpScaling.GetRequiredXp(value + 1))
         {
             value++;
+            onLevelUp?.Invoke(this, exp);
             return true;
         }
 
+        onExpGain?.Invoke(this, exp);
         return false;
     }
+
+    public delegate void LevelEvent(Level level, int experienceGain);
+
+    public LevelEvent? onExpGain;
+    public LevelEvent? onLevelUp;
 }

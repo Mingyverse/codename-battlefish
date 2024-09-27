@@ -38,4 +38,13 @@ public class BattleFish : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(rb);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        onAttacked?.Invoke(this, other.GetComponent<BattleFish>());
+    }
+
+    public delegate void AttackEvent(BattleFish reciepient, BattleFish attacker);
+    
+    public AttackEvent? onAttacked;
 }
