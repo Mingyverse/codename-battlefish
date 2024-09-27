@@ -6,51 +6,67 @@ using Random = UnityEngine.Random;
 
 public abstract class FishAI : MonoBehaviour
 {
-    public float maxSpeed = 10;
-    public float maxStamina = 100; 
-    public float stamina;
-
+    public Stamina stamina = default!;
     public float staminaUsePerSecond = 20;
-    public float staminaRestorePerSecond = 20;
-    public float staminaRestoreDelay = 2;
-
+    
     public float passiveSwimMinDelay = 0.2f;
     public float passiveSwimMaxDelay = 3f;
-    
-    protected bool staminaFatigue;
-    protected float lastStaminaUse;
-    protected bool isRestoringStamina;
-    protected float waitUntilNextPassiveSwim;
-
-    protected Vector2 lastTarget;
+    protected float waitUntilNextSwim;
     protected bool isInCollision;
+
+    public bool autoPassive = true;
+    protected bool isPassive;
+    public float passiveDelay = 2f;
+
+    public bool isPlayer = true;
+        
+    protected float lastAttackedTime;
     protected BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
+
+    protected Vector2 lastDirection;
     
     protected int animSwimming = Animator.StringToHash("Swimming");
     
-    public void Awake()
+    private void Awake()
     {
         fish = GetComponent<BattleFish>();
         Assert.IsNotNull(fish);
      
-        stamina = maxStamina;
+        if (stamina == null) stamina = GetComponent<Stamina>();
+        Assert.IsNotNull(stamina);
+    }
+
+    private void Start()
+    {
+        fish.onAttacked += OnAttacked;
+    }
+
+    private void OnDestroy()
+    {
+        fish.onAttacked -= OnAttacked;
     }
 
     private void FixedUpdate()
     {
+        if (!CanAct())
+            return;
+        
         if (CanMove())
             Move();
     }
 
     private void Update()
     {
-        if (CanRestoreStamina() && !isRestoringStamina)
-            StartCoroutine(StartRestoreStamina());
-
-        if (fish.ability.CanActivate())
+        if (!CanAct())
+            return;
+        
+        if (fish.ability.CanActivate() && !isPassive)
             fish.ability.Activate();
+        
+        if (autoPassive && Time.time > lastAttackedTime + passiveDelay)
+            isPassive = true;
         
         fish.animator.SetBool(animSwimming, fish.rb.velocity.sqrMagnitude > 1);
         
@@ -68,9 +84,14 @@ public abstract class FishAI : MonoBehaviour
         isInCollision = false;
     }
 
+    protected bool CanAct()
+    {
+        return !fish.health.isDead;
+    }
+    
     public float GetStaminaSpeed()
     {
-        switch (stamina)
+        switch (stamina.value)
         {
             case <= 0:
                 return 0.4f;
@@ -81,78 +102,59 @@ public abstract class FishAI : MonoBehaviour
             case <= 100:
                 return 2f;
             default:
-                return 2.1f + stamina / 1000.0f;
+                return 2.1f + stamina.value / 1000.0f;
         }
-    }
-    
-    protected void RestoreStamina(float amount)
-    {
-        stamina += amount;
-        stamina = Math.Min(stamina, maxStamina);
-
-        if (stamina >= maxStamina - 0.0001f)
-            staminaFatigue = false;
-    }
-
-    protected void ConsumeStamina(float amount)
-    {
-        stamina -= amount;
-        stamina = Math.Max(stamina, 0);
-        
-        lastStaminaUse = Time.time;
-
-        if (stamina <= 0 + 0.0001f)
-            staminaFatigue = true;
-    }
-
-    protected bool CanRestoreStamina()
-    {
-        return stamina < maxStamina && lastStaminaUse + staminaRestoreDelay < Time.time;
-    }
-    
-    protected IEnumerator StartRestoreStamina()
-    {
-        isRestoringStamina = true;
-        while (CanRestoreStamina())
-        {
-            RestoreStamina(staminaRestorePerSecond * Time.deltaTime);
-            yield return null;
-        }
-        isRestoringStamina = false;
     }
     
     protected Vector2 GetRandomDirection()
     {
-        float x = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(1f, 2f);
-        float y = Random.Range(0, 2) == 1 ? 1 : -1 * Random.Range(0.1f, 0.2f);
+        float x = Random.Range(1f, 2f);
+        float y = Random.Range(0.1f, 0.2f);
+        
+        if (!isPlayer)
+        {
+            x = Random.Range(0, 2) == 1 ? 1 : -1 * x;
+            y = Random.Range(0, 2) == 1 ? 1 : -1 * y;
+        }
 
         return new Vector2(x, y);
     }
 
     protected void PassiveSwim()
     {
-        if (Time.time < waitUntilNextPassiveSwim)
+        if (Time.time < waitUntilNextSwim)
             return;
 
         if (isInCollision)
         {
-            lastTarget = GetRandomDirection();
-            lastTarget.y += -transform.position.y;
-            lastTarget.x += -transform.position.x;
+            lastDirection = GetRandomDirection();
+            lastDirection.y += -transform.position.y;
+            lastDirection.x += -transform.position.x;
         }
         else
-            lastTarget = GetRandomDirection();
-        waitUntilNextPassiveSwim = Time.time + Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay);
+            lastDirection = GetRandomDirection();
+        waitUntilNextSwim = Time.time + Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay);
             
         float speed = Random.Range(0.5f, 1.2f);
-        fish.rb.AddForce(lastTarget.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
+        fish.rb.AddForce(lastDirection.normalized * (speed * Random.Range(passiveSwimMinDelay, passiveSwimMaxDelay)), ForceMode2D.Impulse);
     }
 
     public bool CanMove()
     {
-        return true;
+        return Time.time > waitUntilNextSwim;
     }
 
+    private void OnAttacked(BattleFish target, BattleFish attacker)
+    {
+        isPassive = false;
+        lastAttacker = attacker;
+        lastAttackedTime = Time.time;
+    }
+
+    public GameObject? GetTarget(float targetDistance)
+    {
+        return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag) && !battleFish.health.isDead, targetDistance)?.gameObject;
+    }
+    
     public abstract void Move();
-    public abstract GameObject? GetTarget();
 }
