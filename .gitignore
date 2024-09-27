@@ -60,3 +60,6 @@ Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
 Assets/StreamingAssets/*.bank
 fmod_editor.log
 .idea/
+
+.user/
+.cache/
