@@ -76,6 +76,9 @@ public class BattleFish : MonoBehaviour
         if (Math.Max(thisMag, attackMag) < minSpeedForDamage)
             return;
 
+        if (attacker.CompareTag(tag))  // same team
+            return;
+
         StartCoroutine(InvulFrame());
         onAttacked?.Invoke(this, attacker);
     }
@@ -105,6 +108,8 @@ public class BattleFish : MonoBehaviour
     {
         rb.excludeLayers = LayerMask.GetMask("Fish");
         rb.gravityScale = -0.01f;
+        rb.freezeRotation = false;
+        rb.AddTorque(1.0f, ForceMode2D.Impulse);
     } 
 
     public delegate void AttackEvent(BattleFish target, BattleFish attacker);
