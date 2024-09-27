@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Serialization;
 
 public class BattleFish : MonoBehaviour
 {
@@ -11,9 +11,12 @@ public class BattleFish : MonoBehaviour
     [NonSerialized] public Level level = default!;
     [NonSerialized] public FishAI ai = default!;
     [NonSerialized] public FishAbility ability = default!;
-    
     [NonSerialized] public Animator animator = default!;
     [NonSerialized] public Rigidbody2D rb = default!;
+    [NonSerialized] public SpriteRenderer spriteRenderer = default!;
+    public float invulFrameDuration = 0.4f;
+    public bool isInvul;
+    public float minSpeedForDamage = 2f;
     
     private void Awake()
     {
@@ -37,12 +40,72 @@ public class BattleFish : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(rb);
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Assert.IsNotNull(spriteRenderer);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        onAttacked?.Invoke(this, other.GetComponent<BattleFish>());
+        health.OnHealthDeath += OnDeath;
     }
+
+    private void OnDestroy()
+    {
+        health.OnHealthDeath -= OnDeath;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isInvul)
+            return;
+
+        if (collision.rigidbody == null)
+            return;
+
+        BattleFish? attacker = collision.gameObject.GetComponent<BattleFish>();
+        if (collision.rigidbody.GetComponent<BattleFish>() == null)
+            return;
+
+        float thisMag = rb.velocity.sqrMagnitude;
+        float attackMag = attacker.rb.velocity.sqrMagnitude;
+        Debug.Log("thisMag" + thisMag + " attackMag = " + attackMag);
+        if (thisMag > attackMag) // this fish velocity is stronger, don't take damage
+            return;
+
+        if (Math.Max(thisMag, attackMag) < minSpeedForDamage)
+            return;
+
+        StartCoroutine(InvulFrame());
+        onAttacked?.Invoke(this, attacker);
+    }
+
+    private IEnumerator InvulFrame()
+    {
+        isInvul = true;
+
+        Color color = Color.red;
+        float stopAt = Time.time + invulFrameDuration;
+        while (Time.time < stopAt)
+        {
+            color.a = 100;
+            spriteRenderer.color = color;
+            yield return new WaitForSeconds(0.1f);
+            color.a = 0;            
+            spriteRenderer.color = color;
+            yield return new WaitForSeconds(0.1f);
+        }
+        color = Color.white;
+        spriteRenderer.color = color;
+        
+        isInvul = false;
+    }
+
+    private void OnDeath(Health _, float _2)
+    {
+        rb.excludeLayers = LayerMask.GetMask("Fish");
+        rb.gravityScale = -0.01f;
+    } 
 
     public delegate void AttackEvent(BattleFish target, BattleFish attacker);
     
