@@ -44,7 +44,8 @@ public class BattleFish : MonoBehaviour
         onAttacked?.Invoke(this, other.GetComponent<BattleFish>());
     }
 
-    public delegate void AttackEvent(BattleFish reciepient, BattleFish attacker);
+    public delegate void AttackEvent(BattleFish target, BattleFish attacker);
     
     public AttackEvent? onAttacked;
+    public AttackEvent? onHeal;
 }
