@@ -5,13 +5,14 @@ public class WildAI : FishAI
     public float fleeDistance = 3f;
     public float fishCalmAfterFlee = 3f;
     public float fleeDelayAfterNotProvoked = 0.1f;
+    public float targetDistance = 8;
     
     private float _lastProvoked = -10;
     private float _startFleeing;
     
     public override void Move()
     {
-        GameObject? target = GetTarget();
+        GameObject? target = GetTarget(targetDistance);
 
         if (!target)
         {
@@ -41,7 +42,7 @@ public class WildAI : FishAI
             if (_lastProvoked < Time.time - fleeDelayAfterNotProvoked)
             {
                 fish.rb.AddForce(-direction.normalized, ForceMode2D.Impulse);
-                ConsumeStamina(staminaUsePerSecond / 2);
+                stamina.ConsumeStamina(staminaUsePerSecond / 2);
             }
             
 
@@ -54,25 +55,21 @@ public class WildAI : FishAI
             }
 
             float speed = GetStaminaSpeed();
-            if (!staminaFatigue)
+            if (!stamina.isFatigued)
             {
                 bool goFaster = Random.Range(0, 6) == 0;
                 
                 speed *= goFaster ? 2 : 1;
-                ConsumeStamina(goFaster ? 1.2f : 1 * staminaUsePerSecond * Time.deltaTime);
+                stamina.ConsumeStamina(goFaster ? 1.2f : 1 * staminaUsePerSecond);
             }
 
-            fish.rb.AddForce(-direction.normalized * speed);
+            fish.rb.AddForce(-direction.normalized * speed, ForceMode2D.Impulse);
+            waitUntilNextSwim = Time.time + passiveSwimMinDelay;
         }
     }
 
     private bool IsCalm()
     {
         return Time.time > _lastProvoked + fishCalmAfterFlee;
-    }
-    
-    public override GameObject? GetTarget()
-    {
-        return StageController.instance.player;
     }
 }

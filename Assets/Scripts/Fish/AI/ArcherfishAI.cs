@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class MeleeAI : FishAI
+namespace Fish.AI;
+
+public class ArcherfishAI : FishAI
 {
-    public float lockOnDistance = 4f;
-    public float targetDistance = 8;
+    public float circlingDistance = 5;
+    public float targetDistance = 10;
     
     public override void Move()
     {
@@ -17,11 +19,16 @@ public class MeleeAI : FishAI
         {
             #pragma warning disable
             Vector2 direction = target.transform.position - transform.position;
-            float distanceSqr = direction.sqrMagnitude;
             #pragma warning restore
             
-            if (distanceSqr > lockOnDistance * lockOnDistance)
+            if (direction.sqrMagnitude > circlingDistance * circlingDistance)
                 lastDirection = direction;
+            else
+            {
+                lastDirection = direction * (direction.magnitude - circlingDistance);
+                lastDirection.y += transform.position.y;
+                lastDirection.x += transform.position.x;
+            }
             
             if (isInCollision)
             {
