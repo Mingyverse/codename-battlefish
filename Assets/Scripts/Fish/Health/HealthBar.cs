@@ -30,6 +30,7 @@ public class HealthBar : MonoBehaviour
         _fish.health.OnHealthGain += FadeHealthBar;
         _fish.health.OnHealthLost += OnHealthChange;
         _fish.health.OnHealthLost += AppearHealthBar;
+        _fish.health.OnHealthDeath += DisableHealthOnDeath;
     }
 
     private void OnHealthChange(Health health, float value)
@@ -54,11 +55,18 @@ public class HealthBar : MonoBehaviour
                 fadeTo.opacity = 100f;
     }
 
+    private void DisableHealthOnDeath(Health health, float value)
+    {
+        foreach (FadeTo fadeTo in spriteFaders)
+            fadeTo.FadeIfNotAlready(0);
+    }
+
     private void OnDestroy()
     {
         _fish.health.OnHealthGain -= OnHealthChange;
         _fish.health.OnHealthGain -= FadeHealthBar;
         _fish.health.OnHealthLost -= OnHealthChange;
         _fish.health.OnHealthLost -= AppearHealthBar;
+        _fish.health.OnHealthDeath -= DisableHealthOnDeath;
     }
 }
