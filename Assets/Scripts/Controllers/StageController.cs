@@ -27,15 +27,38 @@ public class StageController : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
         
-        foreach(BattleFish fish in wildFishes)
+        foreach(BattleFish fish in wildFishes.Where(fish => predicate(fish)))
         {
-            if (!predicate(fish))
-                continue;
-                
             // calc distance
             Transform target = fish.transform;
             Vector3 directionToTarget = target.position - currentPosition;
             float distanceSqrToTarget = directionToTarget.sqrMagnitude;
+            
+            if (distanceSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqrToTarget;
+                bestTarget = target;
+            }
+        }
+     
+        return bestTarget;
+    }
+    
+    public Transform? GetClosestFish(Transform position, Predicate<BattleFish> predicate, float maxDistance)
+    {
+        Transform? bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        
+        foreach(BattleFish fish in wildFishes.Where(fish => predicate(fish)))
+        {
+            // calc distance
+            Transform target = fish.transform;
+            Vector3 directionToTarget = target.position - currentPosition;
+            float distanceSqrToTarget = directionToTarget.sqrMagnitude;
+
+            if (distanceSqrToTarget > maxDistance)
+                continue;
             
             if (distanceSqrToTarget < closestDistanceSqr)
             {
