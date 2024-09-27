@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: clownfish
   fishName: Clownfish
-  description: '. '
+  description: 
   rarity: 2
   waterType: 1
   baseStats:

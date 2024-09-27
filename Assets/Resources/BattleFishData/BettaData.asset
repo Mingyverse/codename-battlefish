@@ -19,8 +19,8 @@ MonoBehaviour:
   waterType: 0
   baseStats:
     maxHp: 100
-    attack: 23
-    defense: 21
+    attack: 3
+    defense: 5
     attackSpeed: 0.9
     criticalRate: 0.5
     criticalMultiplier: 1.5
@@ -28,14 +28,14 @@ MonoBehaviour:
     xpMultiplier: 1
   levelUpStats:
     maxHp: 9.8
-    attack: 2.9
-    defense: 2.9
+    attack: 1
+    defense: 2
     attackSpeed: 0
     criticalRate: 0
     criticalMultiplier: 0
     range: 0
     xpMultiplier: 0
   fishClass: 1
-  xpScaling: 10
-  previewSprite: {fileID: 5877639352123858649, guid: 8d29a07ce2bbcad4e9353e700705e108, type: 3}
-  spriteSkin: {fileID: 5877639352123858649, guid: 8d29a07ce2bbcad4e9353e700705e108, type: 3}
+  xpScaling: 12
+  previewSprite: {fileID: 0}
+  spriteSkin: {fileID: 0}
