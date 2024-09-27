@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 public class Health : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        _fish.onAttacked += OnAttacked;
+        _fish.onHeal += OnHeal;
+        
         value = maxHp;
     }
 
@@ -36,6 +40,28 @@ public class Health : MonoBehaviour
     {
         if (CanPassiveHeal() && !_isPassiveHealing)
             StartCoroutine(StartPassiveHeal());
+    }
+
+    private void OnDestroy()
+    {
+        _fish.onAttacked -= OnAttacked;       
+        _fish.onHeal -= OnHeal;
+    }
+
+    private void OnAttacked(BattleFish target, BattleFish attacker)
+    {
+        float damage = attacker.stats.attack;
+        if (Random.value < attacker.stats.criticalRate)
+            damage *= attacker.stats.criticalMultiplier;
+        
+        TakeDamage(Math.Max(damage - target.stats.defense, 0));
+    }
+
+    private void OnHeal(BattleFish target, BattleFish healer)
+    {
+        float heal = healer.stats.attack;
+        
+        Heal(Math.Max(heal, 0));
     }
 
     private IEnumerator StartPassiveHeal()
