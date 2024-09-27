@@ -5,14 +5,13 @@ public class WildAI : FishAI
     public float fleeDistance = 3f;
     public float fishCalmAfterFlee = 3f;
     public float fleeDelayAfterNotProvoked = 0.1f;
-    public float targetDistance = 8;
     
     private float _lastProvoked = -10;
     private float _startFleeing;
     
     public override void Move()
     {
-        GameObject? target = GetTarget(targetDistance);
+        GameObject? target = GetTarget();
 
         if (!target)
         {

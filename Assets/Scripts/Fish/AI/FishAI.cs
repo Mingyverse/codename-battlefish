@@ -151,9 +151,9 @@ public abstract class FishAI : MonoBehaviour
         lastAttackedTime = Time.time;
     }
 
-    public GameObject? GetTarget(float targetDistance)
+    public GameObject? GetTarget()
     {
-        return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag) && !battleFish.health.isDead, targetDistance)?.gameObject;
+        return StageController.instance.GetClosestFish(transform, battleFish => !battleFish.CompareTag(tag) && !battleFish.health.isDead, fish.stats.range)?.gameObject;
     }
     
     public abstract void Move();

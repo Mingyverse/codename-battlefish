@@ -3,11 +3,10 @@ using UnityEngine;
 public class ArcherfishAI : FishAI
 {
     public float circlingDistance = 5;
-    public float targetDistance = 10;
     
     public override void Move()
     {
-        GameObject? target = GetTarget(targetDistance);
+        GameObject? target = GetTarget();
         if (!target && !isPassive)
             target = lastAttacker?.gameObject;
         

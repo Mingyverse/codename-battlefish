@@ -3,11 +3,10 @@ using UnityEngine;
 public class MeleeAI : FishAI
 {
     public float lockOnDistance = 4f;
-    public float targetDistance = 8;
     
     public override void Move()
     {
-        GameObject? target = GetTarget(targetDistance);
+        GameObject? target = GetTarget();
         if (!target && !isPassive)
             target = lastAttacker?.gameObject;
         
