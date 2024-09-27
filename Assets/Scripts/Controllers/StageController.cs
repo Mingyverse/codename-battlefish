@@ -57,7 +57,7 @@ public class StageController : MonoBehaviour
             Vector3 directionToTarget = target.position - currentPosition;
             float distanceSqrToTarget = directionToTarget.sqrMagnitude;
 
-            if (distanceSqrToTarget > maxDistance)
+            if (distanceSqrToTarget > maxDistance * maxDistance)
                 continue;
             
             if (distanceSqrToTarget < closestDistanceSqr)

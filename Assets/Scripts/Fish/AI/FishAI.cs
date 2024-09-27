@@ -15,13 +15,13 @@ public abstract class FishAI : MonoBehaviour
     protected bool isInCollision;
 
     public bool autoPassive = true;
-    protected bool isPassive;
+    [NonSerialized] public bool isPassive;
     public float passiveDelay = 2f;
 
     public bool isPlayer = true;
         
-    protected float lastAttackedTime;
-    protected BattleFish? lastAttacker;
+    [NonSerialized] public float lastAttackedTime;
+    [NonSerialized] public BattleFish? lastAttacker;
     
     protected BattleFish fish = default!;
 
@@ -55,6 +55,11 @@ public abstract class FishAI : MonoBehaviour
         
         if (CanMove())
             Move();
+        
+        Quaternion rotation = transform.rotation;
+        if (fish.rb.velocity.x < 0) rotation.y = 180;
+        else if (fish.rb.velocity.x > 0) rotation.y = 0;
+        transform.rotation = rotation;
     }
 
     private void Update()
@@ -69,9 +74,6 @@ public abstract class FishAI : MonoBehaviour
             isPassive = true;
         
         fish.animator.SetBool(animSwimming, fish.rb.velocity.sqrMagnitude > 1);
-        
-        if (fish.rb.velocity.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
-        else if (fish.rb.velocity.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnCollisionStay2D(Collision2D other)

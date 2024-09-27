@@ -49,6 +49,7 @@ public class BattleFish : MonoBehaviour
     private void Start()
     {
         health.OnHealthDeath += OnDeath;
+        onAttacked += (BattleFish target, BattleFish attacker) => StartCoroutine(InvulFrame());
     }
 
     private void OnDestroy()
@@ -80,7 +81,6 @@ public class BattleFish : MonoBehaviour
         if (attacker.CompareTag(tag))  // same team
             return;
 
-        StartCoroutine(InvulFrame());
         onAttacked?.Invoke(this, attacker);
     }
 

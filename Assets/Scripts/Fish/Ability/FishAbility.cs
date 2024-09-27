@@ -5,7 +5,6 @@ using UnityEngine.Assertions;
 public abstract class FishAbility : MonoBehaviour
 {
     public string abilityName = "";
-    public float cooldownDuration;
 
     protected BattleFish fish = default!;
     protected float lastProc = 0;
@@ -18,7 +17,7 @@ public abstract class FishAbility : MonoBehaviour
 
     public bool CanActivate()
     {
-        return Time.time > lastProc + cooldownDuration;
+        return Time.time > lastProc + fish.stats.attackSpeed;
     }
     
     public abstract void Activate();
