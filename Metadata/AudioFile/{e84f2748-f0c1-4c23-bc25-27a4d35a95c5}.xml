@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e84f2748-f0c1-4c23-bc25-27a4d35a95c5}">
+		<property name="assetPath">
+			<value>kenney_interface-sounds/Audio/error_001.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.16455782312925171</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{28a5bab8-a87e-44b3-b716-a4872749a41e}</destination>
+		</relationship>
+	</object>
+</objects>
