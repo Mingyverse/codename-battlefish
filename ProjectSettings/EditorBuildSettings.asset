@@ -24,9 +24,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MapSelect.unity
     guid: 70f0345db49cdda448e8453912fbc88b
   - enabled: 1
-    path: Assets/Scenes/Diving.unity
+    path: Assets/Scenes/MapSelectBattle.unity
+    guid: 7d3365bc6d2b4734094cfb3d6d8c7519
+  - enabled: 1
+    path: Assets/Scenes/Diving1.unity
     guid: 3296f6851459eaf4d9fc68298ac8bd0d
   - enabled: 1
-    path: Assets/Scenes/Battle.unity
-    guid: e0bdf87fb38c673afa9f1cd66e99a44c
+    path: Assets/Scenes/Diving2.unity
+    guid: 034bcf29f8336f0468c9c3a4d336f8cf
+  - enabled: 1
+    path: Assets/Scenes/Diving3.unity
+    guid: 215e235dd1c18f54b88380e1d1d4e5b1
+  - enabled: 1
+    path: Assets/Scenes/Battle1.unity
+    guid: 08779a1793157d342bfdec7edb5261b2
+  - enabled: 1
+    path: Assets/Scenes/Battle2.unity
+    guid: fc02b2da57c6bf74aa37f274fd1b29f1
   m_configObjects: {}
