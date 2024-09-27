@@ -71,4 +71,10 @@ public class WildAI : FishAI
     {
         return Time.time > _lastProvoked + fishCalmAfterFlee;
     }
+
+    private new GameObject? GetTarget()
+    {
+        return StageController.instance.player;
+    }
+    
 }
