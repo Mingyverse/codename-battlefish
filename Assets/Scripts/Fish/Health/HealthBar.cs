@@ -51,7 +51,7 @@ public class HealthBar : MonoBehaviour
     {
         if (spriteFaders[0].opacity < 0.001f)
             foreach (FadeTo fadeTo in spriteFaders)
-                fadeTo.FadeIfNotAlready(100);
+                fadeTo.opacity = 100f;
     }
 
     private void OnDestroy()
