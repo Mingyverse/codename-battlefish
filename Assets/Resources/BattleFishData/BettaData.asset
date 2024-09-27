@@ -24,7 +24,7 @@ MonoBehaviour:
     attackSpeed: 0.9
     criticalRate: 0.5
     criticalMultiplier: 1.5
-    range: 30
+    range: 8
     xpMultiplier: 1
   levelUpStats:
     maxHp: 9.8

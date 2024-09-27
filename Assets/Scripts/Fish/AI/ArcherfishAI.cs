@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace Fish.AI;
-
 public class ArcherfishAI : FishAI
 {
     public float circlingDistance = 5;

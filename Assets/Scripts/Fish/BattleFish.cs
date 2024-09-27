@@ -12,8 +12,8 @@ public class BattleFish : MonoBehaviour
     [NonSerialized] public FishAI ai = default!;
     [NonSerialized] public FishAbility ability = default!;
     [NonSerialized] public Animator animator = default!;
-    [NonSerialized] public Rigidbody2D rb = default!;
-    [NonSerialized] public SpriteRenderer spriteRenderer = default!;
+    [NonSerialized] public Rigidbody2D rb = default!; 
+    public SpriteRenderer[] spriteRenderers = default!;
     public float invulFrameDuration = 0.4f;
     public bool isInvul;
     public float minSpeedForDamage = 2f;
@@ -43,8 +43,7 @@ public class BattleFish : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(rb);
         
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        Assert.IsNotNull(spriteRenderer);
+        Assert.IsFalse(spriteRenderers.Length == 0);
     }
 
     private void Start()
@@ -94,14 +93,17 @@ public class BattleFish : MonoBehaviour
         while (Time.time < stopAt)
         {
             color.a = 100;
-            spriteRenderer.color = color;
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                spriteRenderer.color = color;
             yield return new WaitForSeconds(0.1f);
             color.a = 0;            
-            spriteRenderer.color = color;
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+                spriteRenderer.color = color;
             yield return new WaitForSeconds(0.1f);
         }
         color = Color.white;
-        spriteRenderer.color = color;
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+            spriteRenderer.color = color;
         
         isInvul = false;
     }
