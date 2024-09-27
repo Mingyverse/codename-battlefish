@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class TransparentFG : MonoBehaviour
+public class TransparentForeground : MonoBehaviour
 {
     public float opacityPerSecond = 1.0f;
     

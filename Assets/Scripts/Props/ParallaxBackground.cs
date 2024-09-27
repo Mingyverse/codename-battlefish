@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParallaxBG : MonoBehaviour
+public class ParallaxBackground : MonoBehaviour
 {
 
     private float length, startPos;
