@@ -42,4 +42,4 @@ MonoBehaviour:
     xpMultiplier: 0
   fishClass: 2
   xpScaling: 12
-  previewSprite: {fileID: 0}
+  previewSprite: {fileID: 21300000, guid: 50a6715f111b2004880ef629a74615fa, type: 3}
