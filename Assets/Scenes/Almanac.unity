@@ -172,7 +172,6 @@ GameObject:
   - component: {fileID: 115084200}
   - component: {fileID: 115084199}
   - component: {fileID: 115084198}
-  - component: {fileID: 115084197}
   - component: {fileID: 115084201}
   m_Layer: 5
   m_Name: Fish Type Dropdown
@@ -203,22 +202,6 @@ RectTransform:
   m_AnchoredPosition: {x: 208.38678, y: 243.29883}
   m_SizeDelta: {x: 310.1938, y: 78.6932}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &115084197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115084195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b2f113db5fc14488669154c1d6d497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishTypeDropdown: {fileID: 0}
-  allFish: []
-  freshwaterFish: []
-  saltwaterFish: []
 --- !u!114 &115084198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,15 +252,27 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: ALL
+    - m_Text: All
       m_Image: {fileID: 0}
-    - m_Text: Fresh Water
+    - m_Text: Freshwater
       m_Image: {fileID: 0}
-    - m_Text: Salt Water
+    - m_Text: Saltwater
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 433583829}
+        m_TargetAssemblyTypeName: FishGuidePreviews, Assembly-CSharp
+        m_MethodName: LoadPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &115084199
 MonoBehaviour:
@@ -405,7 +400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ALL
+  m_text: All
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
   m_sharedMaterial: {fileID: 696721404125025274, guid: 8f736d0eedbb01c4ebe387c61556d095, type: 2}
@@ -575,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &148990498
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1001,6 +996,7 @@ MonoBehaviour:
   navigation:
     previousPageImage: {fileID: 476292158}
     nextPageImage: {fileID: 1274975615}
+  waterTypeFilterDropdown: {fileID: 115084198}
 --- !u!114 &461351399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3610741489015866603, guid: 7f26f938fa45998f7b07a83784fca59d, type: 3}
@@ -1927,7 +1923,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1300101925}
   m_HandleRect: {fileID: 1300101924}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000033
   m_Size: 0.9387967
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2481,8 +2477,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 563717554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.0612033}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2707,9 +2703,9 @@ RectTransform:
   m_Father: {fileID: 148990498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1535814285
 MonoBehaviour:

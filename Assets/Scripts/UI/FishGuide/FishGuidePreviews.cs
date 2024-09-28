@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -10,8 +11,25 @@ public class FishGuidePreviews : MonoBehaviour
     public PreviewBox[] previewBoxes = Array.Empty<PreviewBox>();
     public PageIndicators indicator;
     public NavigationArrow navigation;
+    public TMP_Dropdown waterTypeFilterDropdown = default!;
     
-    public int numberOfFishes => BattleFishData.GetData().Length;
+    public WaterType filterWaterType
+    {
+        get
+        {
+            switch (waterTypeFilterDropdown?.value)
+            {
+                case 1:
+                    return WaterType.Freshwater;
+                case 2:
+                    return WaterType.Saltwater;
+                default:
+                    return WaterType.All;
+            }
+        }
+    }
+
+    public int numberOfFishes => GetPaginatedFishes().Count();
     public int pageSize => previewBoxes.Length;
     public int maxPage => previewBoxes.Length > 0 ?  (int)Math.Ceiling((double) numberOfFishes / pageSize) : 0;
     [NonSerialized] public int currentPage = 1;
@@ -100,12 +118,30 @@ public class FishGuidePreviews : MonoBehaviour
         navigation.previousPageImage.gameObject.SetActive(currentPage > 1);
     }
 
+    private IEnumerable<BattleFishData> GetPaginatedFishes()
+    {
+        IEnumerable<BattleFishData> enumerable = BattleFishData.GetData();
+        if (filterWaterType != WaterType.All)
+            enumerable = enumerable.Where(fish => fish.waterType == filterWaterType);
+            
+        return enumerable
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize);
+    }
+
+    public void ReloadPage()
+    {
+        for (int i = 0; i < _pageIndicators.Count; i++)
+            Destroy(_pageIndicators[i].gameObject);
+        _pageIndicators = new List<Image>();
+        
+        currentPage = Math.Min(currentPage, maxPage);
+        Start();
+    }
+
     public void LoadPage()
     {
-        IEnumerator<BattleFishData> data = BattleFishData.GetData()
-            .Skip((currentPage - 1) * pageSize)
-            .Take(pageSize)
-            .GetEnumerator();
+        IEnumerator<BattleFishData> data = GetPaginatedFishes().GetEnumerator();
         foreach (PreviewBox previewBox in previewBoxes)
         {
             if (!data.MoveNext())
@@ -113,6 +149,7 @@ public class FishGuidePreviews : MonoBehaviour
             else
                 previewBox.BattleFishData = data.Current;
         }
+        data.Dispose();
     }
 
     public void NextPage()
