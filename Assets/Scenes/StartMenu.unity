@@ -559,8 +559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonRectTransform: {fileID: 210967021}
-  floatSpeed: 5
-  floatHeight: 10
+  floatSpeed: 2
+  floatHeight: 13
 --- !u!43 &221490641
 Mesh:
   m_ObjectHideFlags: 0
