@@ -13,8 +13,7 @@ public class BattleFishData : ScriptableObject
     public FishStats.Stats levelUpStats = FishStats.Stats.Ones();
     public FishClass fishClass;
     public XpScaling xpScaling;
-    public SpriteSkin previewSprite = default!;
-    public SpriteSkin spriteSkin = default!;
+    public Sprite previewSprite = default!;
 
     public static BattleFishData[] GetAll()
     {
