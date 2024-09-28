@@ -146,12 +146,17 @@ public class FishGuidePreviews : MonoBehaviour
     public void LoadPage()
     {
         IEnumerator<BattleFishData> data = GetPaginatedFishes().GetEnumerator();
+
+        float delay = 0.05f;
         foreach (PreviewBox previewBox in previewBoxes)
         {
             if (!data.MoveNext())
                 previewBox.BattleFishData = null;
             else
                 previewBox.BattleFishData = data.Current;
+                
+            StartCoroutine(previewBox.AnimateFadeIn(0.5f, delay));
+            delay += 0.05f;
         }
         data.Dispose();
     }
