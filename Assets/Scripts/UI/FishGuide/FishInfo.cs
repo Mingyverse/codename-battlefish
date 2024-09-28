@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class FishInfo : MonoBehaviour
 {
+    public Sprite? placeholderSprite = default!; 
+        
     public Image previewImage = default!;
     public TextMeshProUGUI fishNameText = default!;
     public TextMeshProUGUI fishWaterTypeText = default!;
@@ -49,7 +51,7 @@ public class FishInfo : MonoBehaviour
         if (battleFishData == null)
         {
             #pragma warning disable
-            previewImage.sprite = null;
+            previewImage.sprite = placeholderSprite;
             #pragma warning restore
             fishNameText.text = "";
             fishWaterTypeText.text = "";

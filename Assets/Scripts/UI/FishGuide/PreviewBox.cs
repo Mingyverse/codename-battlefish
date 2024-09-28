@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PreviewBox : MonoBehaviour
 {
+    public Sprite? placeholderSprite = default!; 
+    
     public Image previewImage = default!;
     public TextMeshProUGUI previewText = default!;
     
@@ -44,7 +46,7 @@ public class PreviewBox : MonoBehaviour
         if (battleFishData == null)
         {
             #pragma warning disable
-            previewImage.sprite = null;
+            previewImage.sprite = placeholderSprite;
             #pragma warning restore
             previewText.text = "";
         }
