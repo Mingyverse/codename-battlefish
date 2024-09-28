@@ -19,7 +19,7 @@ MonoBehaviour:
     thick slippery skin, and no scales.They are found in swampy lowland habitats
     such as wetlands, p\u0101kihi, pools in swamp forests and drains"
   rarity: 1
-  waterType: 0
+  waterType: 1
   baseStats:
     maxHp: 80
     attack: 2

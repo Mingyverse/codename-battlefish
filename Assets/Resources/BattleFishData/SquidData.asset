@@ -21,7 +21,7 @@ MonoBehaviour:
     long slender tentacles with expanded ends and four rows of suckers with toothed,
     horny rings.
   rarity: 2
-  waterType: 1
+  waterType: 2
   baseStats:
     maxHp: 70
     attack: 6

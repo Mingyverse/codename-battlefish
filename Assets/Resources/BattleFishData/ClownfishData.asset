@@ -18,7 +18,7 @@ MonoBehaviour:
     including yellow, orange, red, and black. Most have white details. They are smaller
     fish, with the smallest around 7 to 8cm long and the longest 17cm long.
   rarity: 2
-  waterType: 1
+  waterType: 2
   baseStats:
     maxHp: 70
     attack: 5

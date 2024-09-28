@@ -16,7 +16,7 @@ MonoBehaviour:
   fishName: Betta
   description: 
   rarity: 2
-  waterType: 0
+  waterType: 1
   baseStats:
     maxHp: 100
     attack: 3

@@ -20,7 +20,7 @@ MonoBehaviour:
     rivers to spawn. There are several species of salmon, including the Atlantic
     salmon and Pacific species like Chinook, Sockeye, and Coho. '
   rarity: 0
-  waterType: 0
+  waterType: 1
   baseStats:
     maxHp: 60
     attack: 3

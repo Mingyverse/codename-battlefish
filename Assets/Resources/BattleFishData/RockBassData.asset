@@ -22,7 +22,7 @@ MonoBehaviour:
     and eat pretty much anything smaller than them including insects, crustaceans,
     fish, and crayfish."
   rarity: 2
-  waterType: 0
+  waterType: 1
   baseStats:
     maxHp: 60
     attack: 3
