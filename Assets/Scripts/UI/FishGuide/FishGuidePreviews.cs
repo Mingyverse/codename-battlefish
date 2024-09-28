@@ -29,7 +29,7 @@ public class FishGuidePreviews : MonoBehaviour
         }
     }
 
-    public int numberOfFishes => GetPaginatedFishes().Count();
+    public int numberOfFishes => GetFilteredFishes().Count();
     public int pageSize => previewBoxes.Length;
     public int maxPage => previewBoxes.Length > 0 ?  (int)Math.Ceiling((double) numberOfFishes / pageSize) : 0;
     [NonSerialized] public int currentPage = 1;
@@ -118,13 +118,17 @@ public class FishGuidePreviews : MonoBehaviour
         navigation.previousPageImage.gameObject.SetActive(currentPage > 1);
     }
 
-    private IEnumerable<BattleFishData> GetPaginatedFishes()
+    private IEnumerable<BattleFishData> GetFilteredFishes()
     {
         IEnumerable<BattleFishData> enumerable = BattleFishData.GetData();
         if (filterWaterType != WaterType.All)
             enumerable = enumerable.Where(fish => fish.waterType == filterWaterType);
-            
-        return enumerable
+        return enumerable;
+    }
+
+    private IEnumerable<BattleFishData> GetPaginatedFishes()
+    {
+        return GetFilteredFishes()
             .Skip((currentPage - 1) * pageSize)
             .Take(pageSize);
     }
