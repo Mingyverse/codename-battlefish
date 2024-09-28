@@ -13,6 +13,7 @@ public class PreviewBox : MonoBehaviour
     public bool autoRender = true;
 
     private CanvasGroup _canvasGroup = default!;
+    private FishInfo _fishInfo = default!;
     
     public BattleFishData? BattleFishData
     {
@@ -28,10 +29,14 @@ public class PreviewBox : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        FishInfo[] fishInfo = Resources.FindObjectsOfTypeAll<FishInfo>();
         
         Assert.IsNotNull(previewImage, this + ": previewImage is missing.");
         Assert.IsNotNull(previewText, this + " : previewText is missing.");
         Assert.IsNotNull(_canvasGroup, this + ": canvasGroup is missing");
+        Assert.IsFalse(fishInfo.Length == 0, this + ": fishInfo is missing");
+        
+        _fishInfo = fishInfo[0];
     }
 
     public void Render()
@@ -61,5 +66,10 @@ public class PreviewBox : MonoBehaviour
             _canvasGroup.alpha = Mathf.Lerp(1, 0, (stopAt - Time.time) / duration);
             yield return null;
         }
+    }
+
+    public void OpenFishInfoMenu()
+    {
+        _fishInfo.BattleFishData = battleFishData;
     }
 }
