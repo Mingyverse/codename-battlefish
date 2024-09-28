@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Item;
 
-[CreateAssetMenu(fileName = "NewItemData", menuName = "Codename Battlefish/Item Data", order = 0)]
+[CreateAssetMenu(fileName = "NewItemData", menuName = "Codename BattleFish/Item Data", order = 0)]
 public class ItemData : ScriptableObject
 {
     public string id = "";
