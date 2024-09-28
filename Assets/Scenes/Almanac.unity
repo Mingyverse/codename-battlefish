@@ -263,7 +263,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 433583829}
         m_TargetAssemblyTypeName: FishGuidePreviews, Assembly-CSharp
-        m_MethodName: LoadPage
+        m_MethodName: ReloadPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
