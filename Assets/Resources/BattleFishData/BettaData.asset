@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: betta
   fishName: Betta
-  description: 
+  description: The Siamese fighting fish (Betta splendens), commonly known as the
+    betta, is a freshwater fish native to Southeast Asia, namely Cambodia, Laos,
+    Myanmar, Malaysia, Indonesia, Thailand, and Vietnam. Although aquarium specimens
+    are widely known for their brilliant colours and large, flowing fins, the natural
+    coloration of B. splendens is generally green, brown and grey, while the fins
+    are short; wild fish exhibit strong colours only when agitated. Betta splendens
+    are among the most popular aquarium fish in the world, due to their diverse and
+    colorful morphology and relatively low maintenance.
   rarity: 2
   waterType: 1
   baseStats:
