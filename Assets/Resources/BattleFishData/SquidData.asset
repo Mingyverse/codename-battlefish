@@ -12,29 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a51f81bc4804490bde89ac3712e4891, type: 3}
   m_Name: SquidData
   m_EditorClassIdentifier: 
-  id: 
-  fishName: 
-  description: 
-  rarity: 0
-  waterType: 0
+  id: squid
+  fishName: Squid
+  description: Squid, any of more than 300 species of 10-armed cephalopods classified
+    within the order Teuthoidea and found in both coastal and oceanic waters. Squids
+    may be swift swimmers or part of the drifting sea life. Squids have elongated
+    tubular bodies and short compact heads. Two of the 10 arms have developed into
+    long slender tentacles with expanded ends and four rows of suckers with toothed,
+    horny rings.
+  rarity: 2
+  waterType: 1
   baseStats:
-    maxHp: 1
-    attack: 1
-    defense: 1
-    attackSpeed: 1
-    criticalRate: 1
-    criticalMultiplier: 1
-    range: 1
-    xpMultiplier: 1
+    maxHp: 70
+    attack: 6
+    defense: 2
+    attackSpeed: 0.9
+    criticalRate: 0.6
+    criticalMultiplier: 1.5
+    range: 0
+    xpMultiplier: 0
   levelUpStats:
-    maxHp: 1
-    attack: 1
+    maxHp: 3
+    attack: 4
     defense: 1
-    attackSpeed: 1
-    criticalRate: 1
-    criticalMultiplier: 1
-    range: 1
-    xpMultiplier: 1
-  fishClass: 0
-  xpScaling: 0
+    attackSpeed: 0
+    criticalRate: 0
+    criticalMultiplier: 0
+    range: 0
+    xpMultiplier: 0
+  fishClass: 2
+  xpScaling: 12
   previewSprite: {fileID: 0}

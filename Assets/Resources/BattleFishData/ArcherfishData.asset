@@ -16,7 +16,7 @@ MonoBehaviour:
   fishName: Archerfish
   description: The archerfish, a small tropical fish, are known for their unique
     ability to spray jet of water to their prey.
-  rarity: 0
+  rarity: 2
   waterType: 0
   baseStats:
     maxHp: 70
@@ -38,5 +38,4 @@ MonoBehaviour:
     xpMultiplier: 0
   fishClass: 3
   xpScaling: 10
-  previewSprite: {fileID: 0}
-  spriteSkin: {fileID: 0}
+  previewSprite: {fileID: 21300000, guid: 914c0e848069ee719989b884e570d906, type: 3}

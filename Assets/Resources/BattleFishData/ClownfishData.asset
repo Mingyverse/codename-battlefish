@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: clownfish
   fishName: Clownfish
-  description: 
+  description: The clownfish can be many different colours, depending on its species,
+    including yellow, orange, red, and black. Most have white details. They are smaller
+    fish, with the smallest around 7 to 8cm long and the longest 17cm long.
   rarity: 2
   waterType: 1
   baseStats:
@@ -37,5 +39,4 @@ MonoBehaviour:
     xpMultiplier: 0
   fishClass: 5
   xpScaling: 10
-  previewSprite: {fileID: 0}
-  spriteSkin: {fileID: 0}
+  previewSprite: {fileID: 21300000, guid: e6dffd5654e73cb449239a5ff0a8bf16, type: 3}

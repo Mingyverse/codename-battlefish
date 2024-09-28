@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.U2D.Animation;
 
 [CreateAssetMenu(fileName = "NewBattleFish", menuName = "Codename BattleFish/BattleFish Data", order = 0)]
 public class BattleFishData : ScriptableObject
@@ -15,8 +15,18 @@ public class BattleFishData : ScriptableObject
     public XpScaling xpScaling;
     public Sprite previewSprite = default!;
 
-    public static BattleFishData[] GetAll()
+    private static BattleFishData[] _cachedData = Array.Empty<BattleFishData>();
+    
+    public static BattleFishData[] GetAll(bool forceReload)
     {
-        return Resources.LoadAll<BattleFishData>("BattleFishData");
+        if (_cachedData.Length == 0 || forceReload)
+            _cachedData = Resources.LoadAll<BattleFishData>("BattleFishData");
+        
+        return _cachedData;
+    }
+
+    public static BattleFishData[] GetData()
+    {
+        return GetAll(false);
     }
 }
