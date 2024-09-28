@@ -1,7 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class FishInfo : MonoBehaviour
@@ -35,17 +35,12 @@ public class FishInfo : MonoBehaviour
         Assert.IsNotNull(fishDescriptionText, this + " : fishDescriptionText is missing.");
     }
 
-
-    private void OnEnable()
+    private void Update()
     {
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (Input.GetKeyUp(KeyCode.Escape))
+            gameObject.SetActive(false);
     }
 
-    public void OnDeselect(BaseEventData eventData)
-    {
-        gameObject.SetActive(false);        
-    }
-    
     public void Render()
     {
         if (battleFishData == null)
