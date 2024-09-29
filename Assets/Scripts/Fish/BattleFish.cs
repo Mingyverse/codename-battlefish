@@ -18,7 +18,10 @@ public class BattleFish : MonoBehaviour
     public bool isInvul;
     public float minSpeedForDamage = 2f;
     
-    public int Swimming = Animator.StringToHash("Swimming");
+    public FMODUnity.EventReference onHitSound;
+    public FMODUnity.EventReference onDeathSound;
+    
+    private int _swimming = Animator.StringToHash("Swimming");
     
     private void Awake()
     {
@@ -49,7 +52,7 @@ public class BattleFish : MonoBehaviour
     private void Start()
     {
         health.OnHealthDeath += OnDeath;
-        onAttacked += (BattleFish target, BattleFish attacker) => StartCoroutine(InvulFrame());
+        onAttacked += (_, _) => StartCoroutine(InvulFrame());
     }
 
     private void OnDestroy()
@@ -80,6 +83,7 @@ public class BattleFish : MonoBehaviour
         if (attacker.CompareTag(tag))  // same team
             return;
 
+        FMODUnity.RuntimeManager.PlayOneShot(onHitSound, transform.position);
         onAttacked?.Invoke(this, attacker);
     }
 
@@ -109,15 +113,23 @@ public class BattleFish : MonoBehaviour
 
     private void OnDeath(Health _, float _2)
     {
+        #pragma warning disable
+        onDeath?.Invoke(this, ai.lastAttacker);
+        #pragma warning restore
+        FMODUnity.RuntimeManager.PlayOneShot(onDeathSound, transform.position);
+            
         rb.excludeLayers = LayerMask.GetMask("Fish");
         rb.gravityScale = -0.02f;
         rb.freezeRotation = false;
         rb.AddTorque(0.1f, ForceMode2D.Impulse);
-        animator.SetBool(Swimming, true);
+        rb.totalTorque = Mathf.Min(rb.totalTorque, 0.1f);
+        
+        animator.SetBool(_swimming, false);
     } 
 
     public delegate void AttackEvent(BattleFish target, BattleFish attacker);
     
     public AttackEvent? onAttacked;
     public AttackEvent? onHeal;
+    public AttackEvent? onDeath;
 }
