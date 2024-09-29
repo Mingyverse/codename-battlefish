@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class StageController : MonoBehaviour
 {
+    public StageData stageData = default!;
     [NonSerialized] public GameObject? player; 
     [NonSerialized] public BattleFish[] wildFishes = Array.Empty<BattleFish>();
     
@@ -13,6 +15,8 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
+        Assert.IsNotNull(stageData);
     }
 
     private void Start()
