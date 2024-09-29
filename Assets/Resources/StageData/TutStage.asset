@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: serenity_lake
   prerequisiteStage: {fileID: 0}
-  stageName: Tut Serenity Lake
+  stageName: 1-0 Serenity Lake
   description: Serenity Lake is a good place to practice diving underwater and catching
     fishes. It is recommended for beginners to start here as there is a tutorial
     session by the locals who are profession at catching fishes.
