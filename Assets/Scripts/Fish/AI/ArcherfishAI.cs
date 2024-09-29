@@ -7,6 +7,11 @@ public class ArcherfishAI : FishAI
     public override void Move()
     {
         GameObject? target = GetTarget();
+        #pragma warning disable
+        if (lastAttacker && lastAttacker.health.isDead)
+            lastAttacker = null;
+        #pragma warning restore
+        
         if (!target && !isPassive)
             target = lastAttacker?.gameObject;
         
