@@ -9,6 +9,7 @@ public class CatchFish : MonoBehaviour
     
     public static int fishCaught;
     private bool isCatch;
+    public GameObject? indicator;
     
     // Start is called before the first frame update
     void Start()
@@ -30,15 +31,27 @@ public class CatchFish : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        BattleFish battleFish = other.GetComponentInParent<BattleFish>();
+        if (battleFish == null) return;
+        indicator.SetActive(true);
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (isCatch)
         {
-            BattleFish battleFish = other.GetComponentInParent<BattleFish>();
+            BattleFish battleFish = other.GetComponentInParent<BattleFish>(); 
             if (battleFish == null) return;
 
             battleFish.gameObject.SetActive(false);
             fishCaught++;
         }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        indicator.SetActive(false);
     }
 }
