@@ -39,23 +39,37 @@ public class PlayerDataController : MonoBehaviour
 
     public void Save()
     {
-        string jsonSaveData = JsonUtility.ToJson(this);
-        string filepath = Application.persistentDataPath + "/playerData.json";
-        File.WriteAllText(filepath, jsonSaveData);
+        try
+        {
+            string jsonSaveData = JsonUtility.ToJson(this);
+            string filepath = Application.persistentDataPath + "/playerData.json";
+            File.WriteAllText(filepath, jsonSaveData);
+        }
+        catch (Exception e)
+        {
+            return;
+        }
     }
 
     public void Load()
     {
-        string filepath = Application.persistentDataPath + "/playerData.json";
-        if (!File.Exists(filepath)) 
+        try
+        {
+            string filepath = Application.persistentDataPath + "/playerData.json";
+            if (!File.Exists(filepath))
+                return;
+
+            string text = File.ReadAllText(filepath);
+            PlayerDataController playerData = JsonUtility.FromJson<PlayerDataController>(text);
+            caughtFishesId = playerData.caughtFishesId;
+            fishDatas = playerData.fishDatas;
+            items = playerData.items;
+            completedDives = playerData.completedDives;
+            completedBattles = playerData.completedBattles;
+        }
+        catch (Exception e)
+        {
             return;
-        
-        string text = File.ReadAllText(filepath);
-        PlayerDataController playerData = JsonUtility.FromJson<PlayerDataController>(text);
-        caughtFishesId = playerData.caughtFishesId;
-        fishDatas = playerData.fishDatas;
-        items = playerData.items;
-        completedDives = playerData.completedDives;
-        completedBattles = playerData.completedBattles;
+        }
     }
 }
