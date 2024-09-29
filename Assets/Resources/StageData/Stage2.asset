@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: lagoon_point
   prerequisiteStage: {fileID: 11400000, guid: c7742875165acd8a5953d8f318d7c8ff, type: 2}
-  stageName: Lagoon Point
+  stageName: 1-2 Lagoon Point
   description: Lagoon Point is a picturesque coastal area where the ocean meets tranquil
     tidal pools. The clear waters are home to a rich variety of marine life, with
     vibrant sea stars and curious hermit crabs often found among the rocks. Schools

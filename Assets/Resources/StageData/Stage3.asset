@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: folsum_lake
   prerequisiteStage: {fileID: 11400000, guid: 07c4627def2b2859abc9ed76a7c61c98, type: 2}
-  stageName: Folsum Lake
+  stageName: 1-3 Folsum Lake
   description: "Folsum Lake is a serene spot, perfect for enjoying the beauty of
     nature. The clear waters reveal a lively underwater world, where colorful sunfish
     swim among the gentle ripples. You might spot playful crayfish and calm turtles
