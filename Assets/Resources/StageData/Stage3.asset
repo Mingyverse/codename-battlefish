@@ -24,5 +24,5 @@ MonoBehaviour:
     into a vibrant ecosystem."
   waterType: 1
   previewSprite: {fileID: 21300000, guid: 0ef722a5d7c55294299e2bbefd126e41, type: 3}
-  divingSceneName: Diving 3
+  divingSceneName: Diving3
   battleSceneName: 
