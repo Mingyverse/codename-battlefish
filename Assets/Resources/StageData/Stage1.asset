@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage1
   m_EditorClassIdentifier: 
   id: coral_sea
-  prerequisiteStage: {fileID: 0}
+  prerequisiteStage: {fileID: 11400000, guid: fb23b5969b9cbe94db6da5206cde7e7c, type: 2}
   stageName: 1-1 Coral Sea
   description: "Blue Haven Cove is a diver\u2019s paradise, famous for its rich marine
     life and clear waters. As you dive in, you'll see lively schools of clownfish
