@@ -44,7 +44,7 @@ public class MapSelector : MonoBehaviour
     {
         elements.mapNameText.text = stageData.stageName;
         
-        if (stageData.IsDivingLocked() && stageData.IsBattleLocked()) 
+        if (stageData.IsDivingLocked()) 
             _image.color = buttonColors.locked;
         else
             _image.color = buttonColors.unlocked;
@@ -52,7 +52,7 @@ public class MapSelector : MonoBehaviour
 
     public void OnClick()
     {
-        if (stageData.IsDivingLocked() && stageData.IsBattleLocked()) return;
+        if (stageData.IsDivingLocked()) return;
         
         MapSelectController.instance.OpenMapInfo(this);
     }

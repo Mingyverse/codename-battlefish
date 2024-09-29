@@ -119,7 +119,7 @@ public class MapInfo : MonoBehaviour
         mapButtons.divingButton.interactable = !isLocked;
         mapButtons.divingText.text = isLocked ? "Locked" : "Dive in";
         
-        isLocked = stageData.IsBattleLocked() || stageData.battleSceneName == "";
+        isLocked = isLocked || stageData.IsBattleLocked() || stageData.battleSceneName == "";
         mapButtons.battleButton.interactable = !isLocked;
         mapButtons.battleText.text = isLocked ? "Locked" : "Battle";
         
@@ -134,7 +134,7 @@ public class MapInfo : MonoBehaviour
 
     public void LoadBattleScene()
     {
-        if (stageData != null && !stageData.IsBattleLocked() && stageData.battleSceneName != "")
+        if (stageData != null && !stageData.IsDivingLocked() && !stageData.IsBattleLocked() && stageData.battleSceneName != "")
             SceneManager.LoadScene(stageData.battleSceneName);
     }
 
