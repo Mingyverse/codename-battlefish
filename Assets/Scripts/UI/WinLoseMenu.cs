@@ -42,7 +42,7 @@ public class WinLoseMenu : MonoBehaviour
 
     IEnumerator Wait(GameObject scene)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.25f);
         scene.SetActive(true);
         Time.timeScale = 0f;
     }
