@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class PlayerDataController : MonoBehaviour
@@ -29,6 +30,11 @@ public class PlayerDataController : MonoBehaviour
         instance = this;
         Load();
         DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        SceneManager.activeSceneChanged += (_, _) => Save();
     }
 
     public void Save()
