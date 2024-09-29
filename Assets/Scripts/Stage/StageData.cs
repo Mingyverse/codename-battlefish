@@ -13,19 +13,49 @@ public class StageData : ScriptableObject
     public string divingSceneName = "";
     public string battleSceneName = "";
 
+    private StageData? RecursivelyFindDivingPrerequisiteStage()
+    {
+        StageData? prerequisite = prerequisiteStage;
+        while (prerequisite != null)
+        {
+            if (prerequisite.divingSceneName != "")
+                return prerequisite;
+                
+            prerequisite = prerequisite.prerequisiteStage;
+        }
+
+        return null;
+    }
+    
+    private StageData? RecursivelyFindBattlePrerequisiteStage()
+    {
+        StageData? prerequisite = prerequisiteStage;
+        while (prerequisite != null)
+        {
+            if (prerequisite.battleSceneName != "")
+                return prerequisite;
+                
+            prerequisite = prerequisite.prerequisiteStage;
+        }
+
+        return null;
+    }
+    
     public bool IsDivingLocked()
     {
-        if (prerequisiteStage == null)
+        StageData? prerequisite = RecursivelyFindDivingPrerequisiteStage();
+        if (prerequisite == null)
             return false;
         
-        return !PlayerDataController.instance.completedDives.Contains(prerequisiteStage.id);
+        return !PlayerDataController.instance.completedDives.Contains(prerequisite.id);
     }
     
     public bool IsBattleLocked()
     {
-        if (prerequisiteStage == null)
+        StageData? prerequisite = RecursivelyFindBattlePrerequisiteStage();
+        if (prerequisite == null)
             return false;
         
-        return !PlayerDataController.instance.completedBattles.Contains(prerequisiteStage.id);
+        return !PlayerDataController.instance.completedBattles.Contains(prerequisite.id);
     }
 }
