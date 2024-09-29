@@ -197,6 +197,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134017985}
   m_CullTransparentMesh: 1
+--- !u!1 &247176664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247176666}
+  - component: {fileID: 247176665}
+  m_Layer: 0
+  m_Name: PlayerDataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &247176665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e672556854054ac3ac7f533de7f5395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caughtFishesId: []
+  completedDives: []
+  completedBattles: []
+--- !u!4 &247176666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247176664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.57431614, y: 1.6956328, z: 59.48761}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257960463
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +734,6 @@ GameObject:
   - component: {fileID: 395883107}
   - component: {fileID: 395883106}
   - component: {fileID: 395883108}
-  - component: {fileID: 395883109}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -756,21 +802,6 @@ MonoBehaviour:
   mapInfo: {fileID: 1357399256}
   map: {fileID: 621863360}
   anchorTo: {fileID: 1571873196}
---- !u!114 &395883109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395883105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e672556854054ac3ac7f533de7f5395f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  caughtFishesId: []
-  completedDives: []
-  completedBattles: []
 --- !u!1 &473869838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,18 +1070,6 @@ PrefabInstance:
     - target: {fileID: 9100159242746739153, guid: 56f7c5675086ba290ab1a2b97b8fa885, type: 3}
       propertyPath: m_SizeDelta.y
       value: 701
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100159242746739153, guid: 56f7c5675086ba290ab1a2b97b8fa885, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.09249183
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100159242746739153, guid: 56f7c5675086ba290ab1a2b97b8fa885, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.09249183
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100159242746739153, guid: 56f7c5675086ba290ab1a2b97b8fa885, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.09249183
       objectReference: {fileID: 0}
     - target: {fileID: 9100159242746739153, guid: 56f7c5675086ba290ab1a2b97b8fa885, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4183,3 +4202,4 @@ SceneRoots:
   - {fileID: 1508574358}
   - {fileID: 395883107}
   - {fileID: 2008093066}
+  - {fileID: 247176666}
