@@ -158,11 +158,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!4 &46318769 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7071261939138408498, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
-  m_PrefabInstance: {fileID: 1206270216910872140}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &49303950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2231,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 1
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 46318769}
+  m_Follow: {fileID: 1206270216910872141}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -2265,7 +2260,7 @@ Transform:
   m_GameObject: {fileID: 487938645}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.92, y: 2.2, z: -9.9593}
+  m_LocalPosition: {x: -7.38, y: 3.11, z: -9.9593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8804,10 +8799,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6508176779505855644, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
+--- !u!4 &1206270216910872141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8141407240742806312, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
+  m_PrefabInstance: {fileID: 1206270216910872140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1579291768483920767
 RectTransform:
   m_ObjectHideFlags: 0
