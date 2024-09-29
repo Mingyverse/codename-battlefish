@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0237234e014b487388de7fd2e3317ec3, type: 3}
+  m_Name: TutStage
+  m_EditorClassIdentifier: 
+  id: serenity_lake
+  prerequisiteStage: {fileID: 0}
+  stageName: Tut Serenity Lake
+  description: Serenity Lake is a good place to practice diving underwater and catching
+    fishes. It is recommended for beginners to start here as there is a tutorial
+    session by the locals who are profession at catching fishes.
+  waterType: 1
+  previewSprite: {fileID: 21300000, guid: 0ef722a5d7c55294299e2bbefd126e41, type: 3}
+  divingSceneName: DivingTut
+  battleSceneName: 
