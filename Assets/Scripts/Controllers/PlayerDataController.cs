@@ -17,7 +17,9 @@ public class PlayerDataController : MonoBehaviour
     
     public List<string> caughtFishesId = new List<string>();
     public List<FishData> fishDatas = new List<FishData>(); 
-    public Dictionary<string, int> items = new Dictionary<string, int>();  
+    public Dictionary<string, int> items = new Dictionary<string, int>();
+    public List<string> completedDives = new List<string>();
+    public List<string> completedBattles = new List<string>();
     
     private void Awake()
     {
@@ -36,13 +38,15 @@ public class PlayerDataController : MonoBehaviour
     public void Load()
     {
         string filepath = Application.persistentDataPath + "/playerData.json";
-        if (!File.Exists(filepath)) {
+        if (!File.Exists(filepath)) 
             return;
-        }
+        
         string text = File.ReadAllText(filepath);
         PlayerDataController playerData = JsonUtility.FromJson<PlayerDataController>(text);
         caughtFishesId = playerData.caughtFishesId;
         fishDatas = playerData.fishDatas;
         items = playerData.items;
+        completedDives = playerData.completedDives;
+        completedBattles = playerData.completedBattles;
     }
 }
