@@ -3848,10 +3848,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diver
       objectReference: {fileID: 0}
-    - target: {fileID: 6508176779505855644, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7071261939138408498, guid: 7af7165ddbeb9724d9188f0b9468940a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.92
