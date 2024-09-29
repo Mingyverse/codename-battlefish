@@ -33,7 +33,10 @@ public class MapSelector : MonoBehaviour
         _image = GetComponent<Image>();
         
         Assert.IsNotNull(stageData);
-        
+    }
+
+    private void Start()
+    {
         Render();
     }
 
