@@ -23,6 +23,9 @@ public class PlayerDataController : MonoBehaviour
     
     private void Awake()
     {
+        if (instance)
+            return;
+            
         instance = this;
         Load();
         DontDestroyOnLoad(this);
