@@ -101,6 +101,7 @@ public class MapInfo : MonoBehaviour
             previewImage.image.sprite = previewImage.placeholderSprite;
         
         mapName.text.text = stageData.stageName;
+        mapWaterType.text.text = stageData.waterType.ToString();
         mapDescription.text.text = stageData.description;
 
         if (stageData.prerequisiteStage != null)
